@@ -31,15 +31,16 @@ fastify.setNotFoundHandler(function (request, reply) {
 	}, request, reply)
 })
 
-fastify.setErrorHandler(function (error, request, reply) {
-	errorHandler(error, request, reply)
-})
+// fastify.setErrorHandler(function (error, request, reply) {
+	// errorHandler(error, request, reply)
+// })
 
 function errorHandler(err, request, reply) {
 	sexy.build({ route: `/error-${ err.statusCode }` }, (page, err) => {
 		if(err) {
+			console.log(err);
 			errorHandler({
-				statusCode: 500
+				statusCode: 404
 			}, request, reply);
 
 			return;

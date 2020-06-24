@@ -9,7 +9,7 @@
             </p>
             <ul class="menu-list">
             @each(item in items[header])
-            <docs.item :name="item.name" :items="item.items" :key="item.name" @change="goTo(header, event)"></docs.item>
+            <docs.item :active="isActive(header, item.name)" :name="item.name" :items="item.items" :key="item.name" @change="goTo(header, event)"></docs.item>
 			@endeach
 			</ul>
 			@endeach
@@ -129,7 +129,7 @@ let items = {
 			items: [],
 		}, {
 			name: "Pages",
-			items: [],
+			items: ['Routing', 'Layouts'],
 		}, {
 			name: "Config",
 			items: ['CSS entrypoints', 'Webpack']
@@ -143,12 +143,32 @@ let items = {
 	],
 }
 
+function isActive(dir, name) 
+{
+	let lastRoute = $router.lastRouteResolved();
+
+	if(!lastRoute) {
+		lastRoute = { url: '/' };
+	}
+
+	let [ routeDir, routeName ] = lastRoute.url.replace(/^\/docs\//g, '').split('/');
+
+	dir = dir.toLowerCase().replace(/\s/g, '-');
+	name = name.toLowerCase().replace(/\s/g, '-');
+	
+	if(routeDir === dir && routeName === name) {
+		return true;
+	}
+
+	return false;
+}
+
 function goTo(dir, event) {
 	let [ pageName, paragraph ] = event.detail;
 
-	dir = dir.toLowerCase().replace(/\s/, '-');
+	dir = dir.toLowerCase().replace(/\s/g, '-');
 
-	let page = pageName.toLowerCase().replace(/\s/, '-');
+	let page = pageName.toLowerCase().replace(/\s/g, '-');
 
 	console.log(dir, page, paragraph);
 

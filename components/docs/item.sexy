@@ -1,7 +1,7 @@
 <li>
-	<a @click="goTo(name())">{{ name }}</a>
+	<a @click="goTo(name())" :class="{ 'is-active': active, }">{{ name }}</a>
 	@if(items.length > 0)
-	<ul :class="HiddenClass">
+	<ul :class="{ 'is-hidden': !active }">
 		@each(item, key in items)
     	<li :key="key"><a @click="goTo(name, item)">{{ item }}</a></li>
     	@endeach
@@ -12,6 +12,8 @@
 <script>
 let name = p([]);
 let items = p([]);
+let active = p(false);
+
 let HiddenClass = 'is-hidden';
 
 function goTo(name, subname = null)

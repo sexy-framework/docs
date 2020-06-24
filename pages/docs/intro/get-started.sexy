@@ -1,4 +1,7 @@
 <div class="container">
+	<div class="content">
+		Welcome to the Sexy framework documentation. This will teach you everything you need to know to build fast, small and super fast web applications easily.
+	</div>
 	<h1 class="title">What is Sexy framework?</h1>
 	<div class="content">
 		<p>

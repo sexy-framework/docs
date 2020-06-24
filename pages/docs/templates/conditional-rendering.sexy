@@ -1,0 +1,25 @@
+<div class="container">
+	<h1 class="title">Render</h1>
+	<div class="content">
+		<p>
+			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
+		</p>
+	</div>
+	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
+	
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('object', `
+<span>Message: {{ msg }}</span>
+`);
+
+codeExamples.set('array', `
+<span>Message: {{ msg }}</span>
+`);
+
+</script>

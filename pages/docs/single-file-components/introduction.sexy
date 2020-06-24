@@ -1,0 +1,32 @@
+<div class="container">
+	<h1 class="title">Single File Components</h1>
+	<div class="content">
+		<p>
+			Components are a powerful way to write re-usable code with Sexy framework
+		</p>
+		<p>
+			Single-file components allow us to build an entire component (template, style and functionality) in one file. And, most code editors provide syntax highlighting and linting for these SFCs.
+		</p>
+		<p>
+			Components should always locate in same directory that you can change in sexy-loader settings.
+		</p>
+	</div>
+	<docs.code type="html" :code="codeExamples.get('component')"></docs.code>
+	<h2 class="title">Preprocess styles</h2>
+	<div class="content">
+		<p>
+			We can also use preprocessors for cleaner and more feature-rich components.
+		</p>
+		<p>
+			To set different syntax use attribute lang with proper file extension that webpack loader can handle.
+		</p>
+	</div>
+	<docs.code type="html" :code="codeExamples.get('preprocess')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+</script>

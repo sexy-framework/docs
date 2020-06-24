@@ -1,0 +1,92 @@
+<div class="container">
+	<h1 class="title">Reactivity</h1>
+	<div class="content">
+		<p>
+			Sexy framework has own reactivity system. Compare to others its doesn't calculate variable dependencies on runtime instead it finds dependencies on compilation step and register it.
+		</p>
+	</div>
+	<h2 class="title">State (observables)</h2>
+	<div class="content">
+		<p>
+			To define stateful variable you can define a variable and wrap it value with o(defaultValue):
+		</p>
+	</div>
+	<docs.code type="javascript" :code="codeExamples.get('observables')"></docs.code>
+
+	<h2 class="title">Computeds</h2>
+	<div class="content">
+		<p>
+			To define computed property you should wrap declarated value in arrow function expression:
+		</p>
+	</div>
+	<docs.code type="javascript" :code="codeExamples.get('computed')"></docs.code>
+
+	<h2 class="title">Properties</h2>
+	<div class="content">
+		<p>
+			Components also has properties. You can define a variable and wrap it value with p(defaultValue):
+		</p>
+	</div>
+	<docs.code type="javascript" :code="codeExamples.get('props')"></docs.code>
+	<div class="content">
+		<p>
+			Send prop to component like that
+		</p>
+	</div>
+	<docs.code type="html" :code="codeExamples.get('props-send')"></docs.code>
+
+	<h2 class="title">Watch</h2>
+	<div class="content">
+		<p>
+			You can also watch for changes of stateful variable
+		</p>
+	</div>
+	<docs.code type="javascript" :code="codeExamples.get('watch')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('observables', `
+let str = o('Some str value');
+`);
+
+codeExamples.set('computed', `
+let substr = () => {
+  return str.substr(0, 5) + '-changed';
+}
+`);
+
+codeExamples.set('props', `
+// some.component script tag with prop
+<script>
+let num = p('-1');
+</script>
+`);
+
+codeExamples.set('props-send', `
+<some.component :num="2"></some.component>
+`);
+
+codeExamples.set('watch', `
+// some.component script tag with prop
+import { watch } from 'sexy-framework/observables';
+
+let str = o('Some str value');
+
+let substr = () => {
+  return str.substr(0, 5) + '-changed';
+}
+
+watch(str, () => {
+  console.log('Variable has changed. New value:', str());
+})
+
+watch([substr, str], () => {
+  console.log('Some of variable has changed. New value:', substr());
+})
+`);
+
+</script>

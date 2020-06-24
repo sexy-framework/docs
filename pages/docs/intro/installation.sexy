@@ -1,5 +1,17 @@
 <div class="container">
-	<h2 class="title">Sexy framework</h2>
+	<div class="content">
+		You can start your application by:
+		<ol type="1">
+			<li>
+				Setting up sexy-loader and webpack manually 
+			</li>
+			<li>
+				Use boilerplate to create simple sexy app with server-side rendering
+			</li>
+		</ol>
+	</div>
+	<h2 class="title">Manual use</h2>
+	<h3 class="title is-5">Sexy framework</h3>
 	<div class="content">
 		<p>
 			First of all you need to install package and setup bundler to load sexy components
@@ -7,15 +19,17 @@
 	</div>
 	<docs.code type="console" :code="codeExamples.get('npm')"></docs.code>
 	<docs.code type="console" :code="codeExamples.get('yarn')"></docs.code>
-	<h2 class="title">Webpack</h2>
+	<h3 class="title is-5">Webpack</h3>
 	<div class="content">
 		<p>
-			Add sexy-loader to your webpack config
+			Add sexy-loader to your webpack config to start load sexy components (*.sexy)
 		</p>
 	</div>
 	<docs.code type="javascript" :code="codeExamples.get('webpack-loader')"></docs.code>
+	<h3 class="title">Server side rendering</h3>
 	<div class="content">
-		asdad
+		Use boilerplate to create example app with fast server-side rendering.
+		You also can change server to your own by modifying server/server.js
 	</div>
 	<docs.code type="javascript" :code="codeExamples.get('yarn')"></docs.code>
 </div>
