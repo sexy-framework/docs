@@ -1,0 +1,12 @@
+.highlight {
+	position: relative;
+}
+
+.highlight > .label {
+	outline: 0;
+	padding-bottom: 0;
+	padding-top: 0;
+	position: absolute;
+	right: .25rem;
+	top: .25rem;
+}

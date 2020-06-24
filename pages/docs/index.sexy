@@ -1,0 +1,23 @@
+<div class="container">
+	<h1 class="title">Docs</h1>
+	<h2 class="subtitle">
+	    A simple container to divide your page into <strong>sections</strong>, like the one youre currently reading
+	</h2>
+	<docs.code type="html" :code="codeExamples.get('test')"></docs.code>
+	<docs.code type="javascript" :code="codeExamples.get('js')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('test', `
+<div @click="alert(1)">test</div>
+`);
+
+codeExamples.set('js', `
+let d = 1;
+() => {}
+`);
+</script>

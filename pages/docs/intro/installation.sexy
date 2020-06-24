@@ -1,0 +1,52 @@
+<div class="container">
+	<h2 class="title">Sexy framework</h2>
+	<div class="content">
+		<p>
+			First of all you need to install package and setup bundler to load sexy components
+		</p>
+	</div>
+	<docs.code type="console" :code="codeExamples.get('npm')"></docs.code>
+	<docs.code type="console" :code="codeExamples.get('yarn')"></docs.code>
+	<h2 class="title">Webpack</h2>
+	<div class="content">
+		<p>
+			Add sexy-loader to your webpack config
+		</p>
+	</div>
+	<docs.code type="javascript" :code="codeExamples.get('webpack-loader')"></docs.code>
+	<div class="content">
+		asdad
+	</div>
+	<docs.code type="javascript" :code="codeExamples.get('yarn')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('npm', `
+npm install sexy-framework sexy-loader --save
+`);
+
+codeExamples.set('yarn', `
+yard add sexy-framework sexy-loader 
+`);
+
+codeExamples.set('webpack-loader', `
+module: {
+  rules: [
+    {
+      test: /\.sexy$/i,
+      use: [{
+        loader: 'sexy-loader',
+        options: {
+          path: './components', // path to folder where components located
+          styles: true,
+        }
+      }]
+    },
+  ]
+}
+`);
+</script>

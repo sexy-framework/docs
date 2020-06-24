@@ -1,0 +1,23 @@
+<li>
+	<a @click="goTo(name())">{{ name }}</a>
+	@if(items.length > 0)
+	<ul :class="HiddenClass">
+		@each(item, key in items)
+    	<li :key="key"><a @click="goTo(name, item)">{{ item }}</a></li>
+    	@endeach
+	</ul>
+	@endif
+</li>
+
+<script>
+let name = p([]);
+let items = p([]);
+let HiddenClass = 'is-hidden';
+
+function goTo(name, subname = null)
+{
+	$emit('change', name, subname);
+}
+// $router.lastRouteResolved()
+// console.log($router.lastRouteResolved());
+</script>

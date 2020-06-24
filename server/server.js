@@ -1,0 +1,116 @@
+const sexy = require('../.sexy/server/index.js');
+const path = require('path');
+
+const fastify = require('fastify')({
+	// logger: true
+})
+
+// GZIP
+fastify.register(require('fastify-compress'), {})
+
+// Server static files
+fastify.register(require('fastify-static'), {
+	root: path.resolve(__dirname, '../.sexy/client'),
+	prefix: '/', // optional: default '/'
+})
+
+// Route caching
+fastify.register(
+	require('fastify-caching'), {},  (err) => {
+		if (err) throw err
+	}
+)
+
+// URL data
+fastify.register(require('fastify-url-data'));
+
+
+fastify.setNotFoundHandler(function (request, reply) {
+	errorHandler({
+		statusCode: 404
+	}, request, reply)
+})
+
+fastify.setErrorHandler(function (error, request, reply) {
+	errorHandler(error, request, reply)
+})
+
+function errorHandler(err, request, reply) {
+	sexy.build({ route: `/error-${ err.statusCode }` }, (page, err) => {
+		if(err) {
+			errorHandler({
+				statusCode: 500
+			}, request, reply);
+
+			return;
+		}
+
+		showPage(reply, page);
+	});
+}
+
+sexy.routes((path, route) => {
+	fastify.get(path, (request, reply) => {
+
+		const url = request.urlData();
+		// console.log(url)
+		const uid = url.path + (url.query || '_');
+
+		cache(uid, (callback) => {
+			sexy.build({ route: path }, (html) => {
+				callback(html);
+			});
+		}, (page) => {
+			showPage(reply, page);
+		})
+
+	})
+});
+
+function showPage(reply, page) {
+	reply
+		.type('text/html')
+		.send(page);
+}
+
+function cache(key, getValue, callback)
+{
+	fastify.cache.get(key, (err, result) => {
+		if(result) {
+			return callback(result.item);
+		}
+
+		getValue((html) => {
+			fastify.cache.set(key, html, 10000, (err, result) => {
+				if (err) return reply.send(err)
+				callback(html);
+			});
+		});
+	})
+
+	
+
+	// if(cache) {
+	// 	callback(cache);
+	// } else {
+	// 	getValue((html) => {
+	// 		fastify.cache.set(key, html, 10000, (err, result) => {
+	// 			console.log(1, result)
+	// 			if (err) return reply.send(err)
+	// 			callback(html);
+	// 		});
+	// 	});
+		
+	// }
+}
+
+
+
+// Run the server!
+fastify.listen(3000, (err, address) => {
+	if (err) {
+		console.log(err)
+		throw err
+	}
+	fastify.log.info(`server listening on ${address}`)
+})

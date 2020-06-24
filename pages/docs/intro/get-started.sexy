@@ -1,0 +1,54 @@
+<div class="container">
+	<h1 class="title">What is Sexy framework?</h1>
+	<div class="content">
+		<p>
+			Sexy framework – is super fast reactive compiler for building user interfaces. Unlike other frameworks, Sexy is designed to be native.
+		</p>
+		<p>
+			It means that framework doesn't work in runtime. Basicly it's a compiler that parse template and javascript code and creates Native code expressions.
+		</p>
+		<p>
+			Sexy framework was made to work with server rendering, but is also capable of powering sophisticated Single-Page Applications.
+		</p>
+	</div>
+	<h2 class="title">Why it's Sexy?</h2>
+	<div class="content">
+		<h3 class="title is-5">No runtime</h3>
+		<p>
+			Sexy doesn't work in runtime. It compiles code to native javascript expressions.
+			It's only <img src="https://img.badgesize.io/https://unpkg.com/sexy-framework/dist/sexy.js?compression=gzip&label=gzip&style=flat-square" style="margin: 0 5px; vertical-align: middle;">!
+		</p>
+		<h3 class="title is-5">No reactive libs</h3>
+		<p>
+			Sexy doesn't have reactive library but it's truly reactive! It makes reactivity on compilation step and there is no need to have runtime overhead that calculate variable dependecies.
+		</p>
+		<h3 class="title is-5">Partial hydration</h3>
+		<p>
+			If you launch sexy with server-rendering you will be surprised how fast is it!
+			Partial hydration do their job. Hydration is made only for dynamic parts of application.
+		</p>
+		<h3 class="title is-5">Truly native</h3>
+		<p>
+			Sexy transpile html template to native javascript expressions.
+		</p>
+		<h3 class="title is-5">Super fast</h3>
+		<p>
+			Benchmarks shows minimum x3 speed up compare to popular frameworks.
+		</p>
+	</div>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('npm', `
+npm 
+`);
+
+codeExamples.set('yarn', `
+let d = 1;
+() => {}
+`);
+</script>

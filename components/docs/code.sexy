@@ -1,0 +1,28 @@
+<figure class="highlight">
+	<pre (html)="highlightedCode"></pre>
+	<div class="label">
+		<div class="tag">{{ type }}</div>	
+	</div>
+</figure>
+
+<script>
+import { html } from 'sexy-framework/directives'
+
+let code = p('No code');
+let type = p('html');
+
+let highlightedCode = o(code());
+
+if($render) {
+	const hljs = import('highlight.js');
+	hljs.then(module => {
+		let h = module.default;
+		let value = h.highlight(type(), code()).value;
+
+		console.log(value);
+
+		highlightedCode(value);
+	})
+	
+}
+</script>
