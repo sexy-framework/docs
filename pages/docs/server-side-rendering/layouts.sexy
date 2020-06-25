@@ -1,0 +1,76 @@
+<div class="container content">
+	<p>
+		Sexy позволяет расширять основной шаблон и создавать собственные, просто добавляя их в папку layouts.
+	</p>
+	<p>
+		Вы можете расширить основной шаблон, изменим файл layouts/default.sexy
+	</p>
+	<h2 class="title">
+		Основной шаблон
+	</h2>
+	<p>
+		Убедитесь в том, что компонент sexy/ прописан в шаблоне страницы
+	</p>
+	<p>
+		Код обычного шаблона таков:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('layout-1')"></docs.code>
+	<h2 class="title">
+		Шаблон ошибки
+	</h2>
+	<p>
+		Вы можете изменить страницу ошибки, добавив файл layouts/error.sexy.
+	</p>
+	<p>
+		Шаблон страницы ошибки — специальный шаблон, поскольку компонент sexy/ не должен присутствовать в нём. Представляйте себе этот шаблон как отдельный компонент, который отображается во время возникновения ошибки (404, 500, т.п.)
+	</p>
+	<h2 class="title">
+		Индивидуальный шаблон
+	</h2>
+	<p>
+		Каждый файл первого уровня в папке layouts будет создавать индивидуальный шаблон, доступный через свойство layout в компоненте страницы.
+	</p>
+	<p>
+		Убедитесь в том, что компонент sexy/ прописан в шаблоне страницы
+	</p>
+	<p>
+		Пример шаблона в layouts/blog.sexy:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('layout-2')"></docs.code>
+	<p>
+		Затем в pages/posts.sexy вы можете сказать Sexy использовать созданный шаблон:
+	</p>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('layout-1', `
+<div>
+	<nuxt/>
+</div>
+`);
+
+
+codeExamples.set('layout-2', `
+<template>
+  <div>
+    <h1>Мой блог</h1>
+    <nuxt/>
+  </div>
+</template>
+`);
+
+
+codeExamples.set('page', `
+<div>
+	Some page
+</div>
+
+<script>
+export { Layout } from '@layouts/blog';
+</script>
+`);
+</script>

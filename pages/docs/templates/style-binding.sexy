@@ -1,18 +1,38 @@
-<div class="container">
-	<h1 class="title">Object syntax</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
-	<h1 class="title">Array syntax</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('array')"></docs.code>
+<div class="container content">
+	<h2 class="title">
+		Использование объектов
+	</h2>
+	<p>
+		Объектная запись для :style выглядит почти как CSS, хотя, на самом деле, это объект JavaScript. Для указания свойств CSS можно применять только kebab-case (не забывайте про кавычки при использовании kebab-case):
+	</p>
+	<docs.code type="html" :code="codeExamples.get('object-example')"></docs.code>
+	<p>
+		Можно выносить объект стилей из шаблона, чтобы сделать код чище:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('object-example-obj')"></docs.code>
+	<p>
+		Можно использовать и вычисляемые свойства, возвращающие объекты стилей.
+	</p>
+	<br>
+	<h2 class="title">
+		Использование массивов
+	</h2>
+	<p>
+		Запись :style с массивом позволяет применить несколько объектов стилей к одному и тому же элементу:
+	</p>
+	<docs.code type="html" code='<div :style="[baseStyles, overridingStyles]"></div>'></docs.code>
+
+	<br>
+	<h2 class="title">
+		Использование с копмонентами
+	</h2>
+	<p>
+		При использовании атрибута style на пользовательском компоненте, стили будут добавлены к его корневому элементу. Собственные стили элемента при этом не будут потеряны.
+	</p>
+	<p>
+		Точно также как и классами.
+	</p>
+
 </div>
 
 <script>
@@ -20,12 +40,24 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('object', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('object-example', `
+<div :style="{ color: activeColor, 'font-size': fontSize + 'px' }"></div>
+
+<script>
+let activeColor = o('red');
+let fontSize = o(30);
+</script>
 `);
 
-codeExamples.set('array', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('object-example-obj', `
+<div :style="styleObject"></div>
+
+<script>
+let styleObject = o({
+	color: 'red',
+	fontSize: '13px'
+});
+</script>
 `);
 
 </script>

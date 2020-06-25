@@ -1,0 +1,7 @@
+<button class="button is-small is-light" @click="greet">Поприветствовать</button>
+
+<script>
+function greet() {
+	alert('Hey, are you Sexy enough?');
+}
+</script>

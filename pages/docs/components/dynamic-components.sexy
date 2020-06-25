@@ -1,1 +1,57 @@
-dynamic-components
+<div class="container content">
+	<p>
+		Иногда бывает полезно динамически переключаться между компонентами, например в интерфейсе с вкладками:
+	</p>
+	<p>
+		Показанное выше стало возможным с помощью элемента Sexy - dynamic со специальным атрибутом is:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('example')"></docs.code>
+	<p>
+		В примере выше currentTabComponent может содержать только объект компонента. То есть автоматический импорт компонентов в данном улчае работать не будет и необходимо импортировать вручную:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('tabs')"></docs.code>
+	<p>
+		Обратите внимание, атрибут is может использоваться и с обычными HTML-элементами, то есть туда может передоваться строка с названием тега:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('dynamic-example')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('example', `
+<!-- Компонент меняется при изменении currentTabComponent -->
+<dynamic :is="currentTabDynamic"></dynamic>
+`);
+
+codeExamples.set('tabs', `
+<script>
+import TabOrder from './tabs/tab-order.sexy'
+import TabHistory from './tabs/tab-history.sexy'
+import TabSettings from './tabs/tab-settings.sexy'
+
+let currentTabDynamic = o(TabOrder);
+let tabs = {
+	'orders': TabOrder,
+	'history': TabHistory,
+	'settings': TabSettings,
+}
+
+function changeTag(name) {
+	currentTabDynamic(tabs[name]);
+}
+</script>
+`);
+
+
+codeExamples.set('dynamic-example', `
+<!-- Компонент меняется при изменении currentTabComponent -->
+<dynamic :is="tag"></dynamic>
+
+<script>
+let tag = p('a'); // Тег берется из свойства компонента
+</script>
+`);
+</script>

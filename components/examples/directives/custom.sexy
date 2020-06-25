@@ -1,0 +1,11 @@
+<input type="text" (focus)>
+<script>
+function focus(node, options, value, render) {
+	// mounted
+	node.focus();
+	// unmounted
+	return () => {
+
+	}
+}
+</script>

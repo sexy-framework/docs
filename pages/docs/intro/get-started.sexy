@@ -1,57 +1,73 @@
 <div class="container">
+
 	<div class="content">
-		Welcome to the Sexy framework documentation. This will teach you everything you need to know to build fast, small and super fast web applications easily.
+		Добро пожаловать в документацию Sexy framework. Тут вы сможете понять все о том, как сделать легковесное и супер быстрое приложение, где важно время первой интерактивности (мобильные веб-приложения).
 	</div>
-	<h1 class="title">What is Sexy framework?</h1>
+	
+	<h1 class="title">Что такое Sexy framework?</h1>
+
 	<div class="content">
 		<p>
-			Sexy framework – is super fast reactive compiler for building user interfaces. Unlike other frameworks, Sexy is designed to be native.
+			Итак, Sexy framework – это реактивный компилятор и анализатор Javascript кода для создания пользовательских интерфейсов. В отличии от других фреймворков, Sexy спроектирован, чтобы быть использовать весь нативный потенциал Javascript.
 		</p>
 		<p>
-			It means that framework doesn't work in runtime. Basicly it's a compiler that parse template and javascript code and creates Native code expressions.
+			Это означает, что фреймворк не работает в runtime. Он анализирует ваши компоненты и переводит его в нативный Javascript с очень небольшим оверхедом: всего 3.7kb gzip кода.
 		</p>
 		<p>
-			Sexy framework was made to work with server rendering, but is also capable of powering sophisticated Single-Page Applications.
+			Вообще, Sexy фреймворк был сделан для работы совместно с серверным рендерингом, но он также прекрасно себя чувствует и при создании сложных SPA.
 		</p>
 	</div>
-	<h2 class="title">Why it's Sexy?</h2>
+
+	<br>
+
+	<h1 class="title">Почему он такой Sexy?</h1>
+
 	<div class="content">
-		<h3 class="title is-5">No runtime</h3>
+		<!-- 1 -->
+		<h2 class="title is-4">
+			1. Не работает в runtime
+		</h2>
 		<p>
-			Sexy doesn't work in runtime. It compiles code to native javascript expressions.
-			It's only <img src="https://img.badgesize.io/https://unpkg.com/sexy-framework/dist/sexy.js?compression=gzip&label=gzip&style=flat-square" style="margin: 0 5px; vertical-align: middle;">!
+			Вся основная работа происходит на уровне компиляции, а в итоге вы получаете нативный и супер эффективный Javascript, который позволяет создавать быстрые веб-приложения.
 		</p>
-		<h3 class="title is-5">No reactive libs</h3>
+		<!-- 2 -->
+		<h2 class="title is-4">
+			2. Не использует виртуальный DOM
+		</h2>
 		<p>
-			Sexy doesn't have reactive library but it's truly reactive! It makes reactivity on compilation step and there is no need to have runtime overhead that calculate variable dependecies.
+			Опять же, в отличии от других фреймворков, вместо виртуального DOM используется нативный DOM.
 		</p>
-		<h3 class="title is-5">Partial hydration</h3>
+		<!-- 3 -->
+		<h2 class="title is-4">
+			3. Нет реактивных библиотек
+		</h2>
 		<p>
-			If you launch sexy with server-rendering you will be surprised how fast is it!
-			Partial hydration do their job. Hydration is made only for dynamic parts of application.
+			Sexy полностью реактивен, но не использует ни одну реактивную библиотеку и, скорее всего, никогда не будет использовать. Почему? Потому что реактивность делается в момент компиляции. Sexy анализирует весь написанный Javascript код и проставляет реактивные зависимости вручную, за вас и за браузер.
 		</p>
-		<h3 class="title is-5">Truly native</h3>
+		<!-- 4 -->
+		<h2 class="title is-4">
+			4. Частичная гидратация
+		</h2>
 		<p>
-			Sexy transpile html template to native javascript expressions.
+			Sexy был спроектирован с подходом hydrate first. То есть изначально разрабатывался, чтобы гидратация была максимальна быстрая, дабы повысить FID и TTI. И мы сделали это! В среднем скорость начала работы на клиенте (при SSR) лучше чем у других фреймворков минимум в 3 раза.
 		</p>
-		<h3 class="title is-5">Super fast</h3>
+		<!-- 5 -->
+		<h2 class="title is-4">
+			5. Действительно нативный
+		</h2>
 		<p>
-			Benchmarks shows minimum x3 speed up compare to popular frameworks.
+			Sexy переводит весь код в нативные Javascript инструкции, получается мало кода, который и очень быстрый при этом!
+		</p>
+		<!-- 6 -->
+		<h2 class="title is-4">
+			6. Очень быстрый
+		</h2>
+		<p>
+			Помимо быстрого рендера, Sexy очень сильно улучшает гидратацию, что позволит использовать фреймворк при создании веб-приложений для медленных устройств. Или… Проектировать приложения почти не задумываясь о производительности и всяких костылях.
 		</p>
 	</div>
 </div>
 
 <script>
 export { Layout } from '@layouts/docs.sexy';
-
-let codeExamples = new Map();
-
-codeExamples.set('npm', `
-npm 
-`);
-
-codeExamples.set('yarn', `
-let d = 1;
-() => {}
-`);
 </script>

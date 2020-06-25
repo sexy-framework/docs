@@ -1,0 +1,51 @@
+<div class="container content">
+	<p>
+		Папка pages позволяет создавать любой вид маршрута, просто создавая Sexy-компоненты. Эти компоненты обладают свойствами, с помощью которых можно легко создавать и поддерживать приложение.
+	</p>
+	
+	<p>
+		Компонент страницы — это Sexy компонент с дополнительной супер-силой. Сперва, давайте создадим простой компонент, показывающий красный заголовок "Hello World!"
+	</p>
+	
+	<p>
+		Назовём первую страницу pages/index.sexy:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('page')"></docs.code>
+	
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('page', `
+<h1 class="red">Hello {{ name }}!</h1>
+
+<script>
+let name = o('World')
+</script>
+
+<style>
+.red {
+  color: red;
+}
+</style>
+`);
+
+
+codeExamples.set('page2', `
+<h1 class="red">Hello {{ name }}!</h1>
+
+<script>
+let name = o('World')
+</script>
+
+<style lang="scss">
+.red {
+  color: red;
+}
+</style>
+`);
+
+</script>

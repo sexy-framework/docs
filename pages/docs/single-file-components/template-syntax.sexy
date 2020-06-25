@@ -1,58 +1,64 @@
-<div class="container">
-	<h1 class="title">Text</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('text')"></docs.code>
-	<div class="content">
-		<p>
-			The mustache tag will be replaced with the value of the msg property on the corresponding data object. It will also be updated whenever the data object’s msg property changes.
-		</p>
-	</div>
-	<h2 class="title">Attributes</h2>
-	<div class="content">
-		<p>
-			Mustaches cannot be used inside HTML attributes. Instead, use a ':' before attribute name:
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('dyn-attribute')"></docs.code>
-	<div class="content">
-		<p>
-			In the case of boolean attributes, where their mere existence implies true, v-bind works a little differently. In this example:
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('boolean-attribute')"></docs.code>
-	<div class="content">
-		<p>
-			If isButtonDisabled has the value of null, undefined, or false, the disabled attribute will not even be included in the rendered <button> element.
-		</p>
-	</div>
+<div class="container content">
+	<h2 class="title">
+		Текст
+	</h2>
+	<p>
+		Самая обычный вариант использования привязывания данных – это Mustache-подобный синтаксис:
+	</p>
+	<docs.code type="html" code="<span>Message: {{ msg }}</span>"></docs.code>
+	<p>
+		Mustache-синтаксис будет заменен значением переменной msg. Если она реактивная, то и при изменении msg код также будет изменятся и в DOM будет отображаться новое значение msg.
+	</p>
 
-	<h2 class="title">Using javascript expressions</h2>
-	<div class="content">
-		<p>
-			So far we’ve only been binding to simple property keys in our templates. But Vue.js actually supports the full power of JavaScript expressions inside all data bindings:
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('expr-1')"></docs.code>
-	<div class="content">
-		<p>
-			These expressions will be evaluated as JavaScript in the data scope of the owner Vue instance. One restriction is that each binding can only contain one single expression, so the following will NOT work:
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('expr-2')"></docs.code>
-
-	<h2 class="title">Directives</h2>
-	<div class="content">
-		<p>
-			Directives are special attributes inside brackets (attributeName). Directive attribute values are expected to be a single JavaScript expression. A directive’s job is to reactively apply side effects to the DOM when the value of its expression changes. Let’s review the example we saw in the introduction:
-		</p>
-	</div>
-	<docs.code type="javascript" :code="codeExamples.get('directive')"></docs.code>
-
+	<br>
+	<h2 class="title">
+		Атрибуты
+	</h2>
+	<p>
+		Чтобы использовать Javascript в атрибутах, необходимо маркировать данный атрибут с помощью :.
+	</p>
+	<docs.code type="html" code='<div :id="dynamicId"></div>'></docs.code>
+	<p>
+		Если этого не сделать, то id будет равно dynamicId, а не значение данной переменной.
+	</p>
+	<p>
+		Для boolean переменных, все работает также, но если значение переменной null, undefined или false, то атрибут пропадает из DOM.
+	</p>
 	
+	<br>
+	<h2 class="title">
+		Использование Javascript expressions
+	</h2>
+	<p>
+		Sexy также поддерживает всю мощь Javascript expressions:
+	</p>
+	<docs.code type="javascript" :code="codeExamples.get('expr-js')"></docs.code>
+	<docs.code type="html" :code="codeExamples.get('expr-html')"></docs.code>
+	<p>
+		Нужно разграничивать Javascript expressions и statements:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('expr-error')"></docs.code>
+	<p>
+		Такой код должен использовать только в блоке описание логики компонента – теге Script.
+	</p>
+	<p>
+		Также, если вы используете реактивные переменные или свойства компонентов, в шаблоне не нужно вызывать данную переменную:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('stateful')"></docs.code>
+	<br>
+	<h2 class="title">
+		Директивы
+	</h2>
+	<p>
+		Директивы – это специальные атрибуты, которые оборачиваются в скобочки (название_директивы). Значение данного атрибута – всегда Javascript expression.
+	</p>
+	<p>
+		Sexy директивы позволяет применять свой код для обработки значений и применений их для DOM элементов. Вы можете навешивать любые события, и изменять DOM элемент как угодно.
+	</p>
+	<p>
+		Например, так происходит привязка данных к input (two way data binding):
+	</p>
+	<docs.code type="html" :code="codeExamples.get('directives')"></docs.code>
 </div>
 
 <script>
@@ -60,29 +66,19 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('text', `
-<span>Message: {{ msg }}</span>
-`);
-
-codeExamples.set('dyn-attribute', `
-<div :id="dynamicId"></div>
-`);
-
-codeExamples.set('boolean-attribute', `
-<button v-bind:disabled="isButtonDisabled">Button</button>
-`);
-
-codeExamples.set('expr-1', `
+codeExamples.set('expr-js', `
 {{ number + 1 }}
 
 {{ ok ? 'YES' : 'NO' }}
 
 {{ message.split('').reverse().join('') }}
-
-<div v-bind:id="'list-' + id"></div>
 `);
 
-codeExamples.set('expr-2', `
+codeExamples.set('expr-html', `
+<div :id="'list-' + id"></div>
+`);
+
+codeExamples.set('expr-error', `
 <!-- this is a statement, not an expression: -->
 {{ var a = 1 }}
 
@@ -90,8 +86,22 @@ codeExamples.set('expr-2', `
 {{ if (ok) { return message } }}
 `);
 
-codeExamples.set('directive', `
-<input type="text" (bind)="nameValue"/>
+codeExamples.set('stateful', `
+<!-- Так правильно -->
+<div :data-value=”counter”>{{ counter + 1 }}</div>
+
+<!-- Так не правильно -->
+<div :data-value=”counter()”>{{ counter() + 1 }}</div>
+
+<script>
+Let counter = o(1);
+</script>
 `);
 
+codeExamples.set('directives', `
+<input type="text" (bind)="nameValue"/>
+<script>
+import { bind } from ‘sexy-framework/directives’;
+</script>
+`);
 </script>

@@ -1,1 +1,70 @@
-usage.sexy
+<div class="container content">
+	<p>
+		Входные параметры — это пользовательские атрибуты, которые вы можете установить на компоненте. Когда значение передаётся в атрибут входного параметра, оно становится свойством экземпляра компонента. Чтобы передать любое значение в компонент, мы можем включить его в список входных параметров, которые принимает компонент, с помощью декларирования переменных.
+	</p>
+	<p>
+		Как было сказано в начале, Sexy использует свою имплементацию реактивности, поэтому он также умно отслеживает свойства компонентов и сам следит над применением частичной гидратации в зависимости от того, реактивное ли значение было передано:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('blog.post')"></docs.code>
+	<p>
+		После объявления входного параметра вы можете передавать данные в него через пользовательский атрибут, например:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('blog.posts')"></docs.code>
+	<p>
+		Результат:
+	</p>
+	<figure class="result">
+		<examples.components.posts></examples.components.posts>
+	</figure>
+	<p>
+		Свойство title не является реактивным само по себе (если не передано реактивное значение), но работает точно также, будто реактивное:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('react')"></docs.code>
+	<p>
+		При этом записать значение нельзя, это свойство. Для этого корректного обмена данными между родительским и дочерним компонентов необходимо использовать директиву bind.
+	</p>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('blog.post', `
+<!-- Компонент: blog.post -->
+<div class="post">
+	<h1 class="title">
+		{{ title }}
+	</h1>
+	<div class="content">
+		Blot post test
+	</div>
+</div>
+
+<script>
+// Свойство Title со значением по умолчанию: 'There is no title'
+let title = p('There is no title');
+</script>
+`);
+
+codeExamples.set('blog.posts', `
+<blog.post title="Simple string title"></blog.post>
+<blog.post :title="title"></blog.post>
+<blog.post></blog.post>
+<button @click="title('Updated reactive title')"></button>
+
+<script>
+let title = o('This is reactive title');
+</script>
+`);
+
+
+codeExamples.set('react', `
+<script>
+// Свойство Title со значением по умолчанию: 'There is no title'
+let title = p('There is no title');
+// Получить значение title
+let titleValue = title();
+</script>
+`);
+</script>

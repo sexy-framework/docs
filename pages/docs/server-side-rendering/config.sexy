@@ -1,0 +1,29 @@
+<div class="container content">
+	<h2 class="title">
+		Конфигурация
+	</h2>
+	<p>
+		Поставляемая по-умолчанию конфигурация Sexy покрывает большую часть потребностей. Однако, файл настроек sexy.config.js даёт возможность изменить её.
+	</p>
+	<h2 class="title">
+		Опция styles
+	</h2>
+	<p>
+		Опция позволяет определить файлы CSS/модули/библиотеки, которые вы хотите установить в качестве глобальных (подключенных к каждой странице).
+	</p>
+	<docs.code type="javascript" :code="codeExamples.get('module')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('module', `
+module.exports = {
+	styles: [
+		'./assets/styles/main.scss'
+	],
+}
+`);
+</script>

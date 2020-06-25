@@ -1,11 +1,30 @@
-<div class="container">
-	<h1 class="title">Form</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
+<div class="container content">
+	<p>
+		Можно использовать директиву (bind) для двунаправленного связывания данных с элементами форм input, textarea и select. Способ обновления элемента выбирается автоматически в зависимости от типа элемента. Хотя (bind) и выглядит как нечто волшебное, в действительности это лишь синтаксический сахар для обновления данных в элементах ввода, с некоторыми поправками для исключительных случаев.
+	</p>
+	<p>
+		Внутренне (bind) использует разные свойства и генерирует разные события для различных элементов ввода:
+	</p>
+	<ol type="1">
+		<li>Элементы для ввода текста и многострочного текста используют свойство value и событие input</li>
+		<li>Чекбоксы и радиокнопки используют свойство checked и событие change</li>
+		<li>Выпадающие списки используют свойство value и событие change</li>
+	</ol>
+	<br>
+	<h2>
+		Input
+	</h2>
+	<docs.code type="html" :code="codeExamples.get('input')"></docs.code>
+	<figure class="result">
+		<examples.bind.input></examples.bind.input>
+	</figure>
+	<h2>
+		Textarea
+	</h2>
+	<docs.code type="html" :code="codeExamples.get('input')"></docs.code>
+	<figure class="result">
+		<examples.bind.textarea></examples.bind.textarea>
+	</figure>
 	
 </div>
 
@@ -14,12 +33,30 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('object', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('input', `
+<input (bind)="message" placeholder="отредактируй меня">
+<p>Введённое сообщение: {{ message }}</p>
+
+<script>
+import { bind } from 'sexy-framework/directives'
+
+let message = o('');
+</script>
 `);
 
-codeExamples.set('array', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('textarea', `
+<span>Введённое многострочное сообщение:</span>
+<p style="white-space: pre-line;">{{ message }}</p>
+<br>
+<textarea (bind)="message" placeholder="введите несколько строчек"></textarea>
+
+<script>
+import { bind } from 'sexy-framework/directives'
+
+let message = o('');
+</script>
 `);
+
+
 
 </script>

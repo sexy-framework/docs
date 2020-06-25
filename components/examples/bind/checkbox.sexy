@@ -1,0 +1,9 @@
+
+<input type="checkbox" id="checkbox" (bind)="checked">
+<label for="checkbox">{{ checked }}</label>
+
+<script>
+import { bind } from 'sexy-framework/directives'
+
+let checked = o(true);
+</script>

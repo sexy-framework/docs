@@ -1,0 +1,10 @@
+<div>
+	<examples.components.post title="Simple string title"></examples.components.post>
+	<examples.components.post :title="title"></examples.components.post>
+	<examples.components.post></examples.components.post>
+	<button @click="title('Updated reactive title')">Изменить значение title</button>
+</div>
+
+<script>
+let title = o('This is reactive title');
+</script>

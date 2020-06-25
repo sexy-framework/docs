@@ -1,1 +1,28 @@
-custom transition
+<div class="container content">
+	<p>
+		Sexy также предоставляет возможность написать любой обработчик для своей анимации:
+	</p>
+	<docs.code type="javascript" :code="codeExamples.get('example')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('example', `
+// node – DOM элемент к которому нужно применить анимацию
+// value - значение переданно в атрибуте
+// transition:custom="test"
+// out – Происходит ли скрытие элемента 
+export function custom(node, value, out = false)
+{
+	// код
+
+	return {
+		duration: 100, // animation duration ms
+	}
+}
+`);
+
+</script>

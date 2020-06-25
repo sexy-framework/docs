@@ -1,0 +1,9 @@
+<div>
+	<!-- Example child component -->
+	Init value: {{ value }} <br>
+	<button @click="$emit('input', 'Children text')">Change value</button>
+</div>
+
+<script>
+let value = p(null);
+</script>

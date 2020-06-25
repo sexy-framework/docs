@@ -1,0 +1,16 @@
+<div class="container content">
+	<p>
+		Sexy по умолчанию генерирует файл для запуска сервера, но вы можете использовать любой другой.
+	</p>
+	<p>
+		Sexy по умолчанию включает сжатие gzip и кэширование роутеров
+	</p>
+	<p>
+		Файл server/server.js
+	</p>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+</script>

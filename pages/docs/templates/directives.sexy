@@ -1,11 +1,27 @@
-<div class="container">
-	<h1 class="title">Directives</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
+<div class="container content">
+	<p>
+		Помимо встроенных директив (таких как bind и html), Sexy позволяет использовать ваши собственные. При этом важно понимать, что основным механизмом создания повторно используемого кода во Sexy всё-таки являются компоненты. Тем не менее, для выполнения низкоуровневых операций с DOM пользовательские директивы могут очень пригодиться. В качестве примера реализуем фокус на элементе input:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('directive')"></docs.code>
+	<p>
+		Результат:
+	</p>
+	<figure class="result">
+		<examples.directives.custom></examples.directives.custom>
+	</figure>
+	<p>
+		После загрузки страницы этот элемент получает фокус ввода (примечание: autofocus не работает на мобильном Safari). Если вы никуда не кликнули с момента открытия этой главы руководства, фокус ввода и сейчас должен быть на этом элементе.
+	</p>
+	<br>
+	<h2 class="title">
+		Аргументы
+	</h2>
+	<ol type="1">
+	    <li>node – DOM элемент, к которому была привязана директива</li>
+	    <li>options – Опции вызова директивы (focus.option1.option2)</li>
+	    <li>value – Значение переданное в директиву (focus)="1"</li>
+	    <li>render – Boolean – Позвоялет определить происходит рендеринг или гидратация, что позволяет реализовать эффективную гидратацию на клиенте при разработки сложных директив</li>
+	</ol>
 	
 </div>
 
@@ -14,12 +30,19 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('object', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('directive', `
+<input type="text" (focus)>
+<script>
+function focus(node, options, value, render) {
+	// mounted
+	node.focus();
+	// unmounted
+	return () => {
+
+	}
+}
+</script>
 `);
 
-codeExamples.set('array', `
-<span>Message: {{ msg }}</span>
-`);
 
 </script>

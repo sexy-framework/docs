@@ -1,0 +1,10 @@
+<div class="field">
+	<input class="input" (bind)="message" placeholder="отредактируй меня">
+	<p>Введённое сообщение: {{ message }}</p>
+</div>
+
+<script>
+import { bind } from 'sexy-framework/directives'
+
+let message = o('');
+</script>

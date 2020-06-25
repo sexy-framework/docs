@@ -1,0 +1,10 @@
+<div>
+	<button class="button is-small is-light" @click="say('hi')">Скажи hi</button>
+	<button class="button is-small is-light" style="margin-right: 10px;" @click="say('what')">Скажи what</button>
+</div>
+
+<script>
+function say(text) {
+	alert(text);
+}
+</script>

@@ -1,12 +1,31 @@
-<div class="container">
-	<h1 class="title">Render</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
+<div class="container content">
+	<p>
+		Блок \@if / \@endif используется для рендеринга блока по условию. Блок будет отображаться только в том случае, если выражение условия возвращает значение, приводимое к true.
+	</p>
+	<docs.code type="html" :code="codeExamples.get('if')"></docs.code>
+	<p>
+		Также можно добавить блок «иначе», используя директиву \@else или \@elseif:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('if-else')"></docs.code>
+
+	<br>
+	<h2 class="title">
+		Условный рендеринг группы элементов
+	</h2>
+	<p>
+		Условный рендеринг поддерживает множество элментов
+	</p>
+	<docs.code type="html" :code="codeExamples.get('if-group')"></docs.code>
 	
+	<br>
+	<h2 class="title">
+		Смешанный рендеринг
+	</h2>
+	<p>
+		Вы можете группировать использование условной отрисовки с отрисовкой списков:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('if-mixed')"></docs.code>
+
 </div>
 
 <script>
@@ -14,12 +33,38 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('object', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('if', `
+@if(sexy)
+	<h1>Сексуальненько!</h1>
+@endif
 `);
 
-codeExamples.set('array', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('if-else', `
+@if(sexy)
+	<h1>Сексуальненько!</h1>
+@else
+	<h1>Вяленько...</h1>
+@endif
+`);
+
+codeExamples.set('if-group', `
+@if(sexy)
+	<h1>Сексуальненько!</h1>
+	<div>Любое</div>
+	<div>Количество</div>
+	<input type="text" value="Элементов">
+@else
+	<h1>Вяленько...</h1>
+@endif
+`);
+
+
+codeExamples.set('if-mixed', `
+@if(sexy)
+	@each(item, key in [1, 2, 3])
+	<div :key="key"></div>
+	@endeach
+@endif
 `);
 
 </script>

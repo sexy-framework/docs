@@ -1,0 +1,12 @@
+<div class="post">
+	<div>{{ title }}</div>
+	<div class="content">
+		Blog post content
+	</div>
+	<hr />
+</div>
+
+<script>
+// Свойство Title со значением по умолчанию: 'There is no title'
+let title = p('There is no title');
+</script>

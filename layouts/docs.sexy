@@ -72,7 +72,7 @@ let items = {
 			items: ['Object syntax', 'Array syntax'],
 		}, {
 			name: "Conditional rendering",
-			items: [],
+			items: ['Conditional groups', 'Mixed rendering'],
 		}, {
 			name: "List rendering",
 			items: [],
@@ -125,11 +125,17 @@ let items = {
 			name: "Get started",
 			items: [],
 		}, {
-			name: "Layouts",
+			name: "Directory structure",
 			items: [],
 		}, {
 			name: "Pages",
 			items: ['Routing', 'Layouts'],
+		}, {
+			name: "Routing",
+			items: ['CSS entrypoints', 'Webpack']
+		}, {
+			name: "Layouts",
+			items: ['CSS entrypoints', 'Webpack']
 		}, {
 			name: "Config",
 			items: ['CSS entrypoints', 'Webpack']

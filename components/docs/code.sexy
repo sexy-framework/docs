@@ -17,7 +17,13 @@ async function highlight()
 {
 	const hljs = await import('highlight.js');
 
-	let value = hljs.highlight(type(), code().replace(/^\\n/g, '')).value;
+	let value = code();
+	
+	value = value
+		.replace(/^\n/g, '')
+		.replace(/\t/g, '  ');
+
+	value = hljs.highlight(type(), value).value;
 
 	highlightedCode(value);
 }

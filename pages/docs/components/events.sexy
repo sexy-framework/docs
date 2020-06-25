@@ -1,1 +1,88 @@
-usage.sexy
+<div class="container content">
+	<p>
+		В отличие от компонентов и входных параметров, имена событий никогда не будут использоваться в качестве имён переменных или имён свойств в JavaScript, поэтому нет причин использовать camelCase или PascalCase. Кроме того, директивы прослушивания событий @ внутри DOM-шаблонов автоматически преобразуются в нижний регистр (из-за нечувствительности HTML к регистру), поэтому @myEvent станет @myevent — что делает прослушивание события myEvent невозможным.
+	</p>
+	<p>
+		По этим причинам мы рекомендуем всегда использовать kebab-case для имён событий
+	</p>
+	<br>
+	<h2 class="title">
+		Директива (bind) и компоненты
+	</h2>
+	<p>
+		По умолчанию (bind) на компоненте использует входной параметр value и событие input. 
+	</p>
+	<docs.code type="html" :code="codeExamples.get('child')"></docs.code>
+	<p>
+		Теперь, когда используем (bind) на этом компоненте:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('parent')"></docs.code>
+	<p>
+		Значение text будет передано во входном параметре value. А обновляться свойство text будет когда example сгенерирует событие input с новым значением.
+	</p>
+	<p>
+		Результат:
+	</p>
+	<figure class="result">
+		<examples.components.bindparent></examples.components.bindparent>
+	</figure>
+	<br>
+	<h2 class="title">Emit</h2>
+	<p>
+		Как можно было заметить, в предыдущем примере используется emit для вызова события у родительского компонента.
+	</p>
+	<p>
+		Sexy использует emit для регистарции и передачи пользовательских событий для реализации общение компонентов между друг другом используя предыдущий пример, реализуем свой обработчик вместо (bind):
+	</p>
+	<docs.code type="html" :code="codeExamples.get('emit')"></docs.code>
+	<p>
+		Результат:
+	</p>
+	<figure class="result">
+		<examples.components.bindparent></examples.components.bindparent>
+	</figure>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+// import { html } from 'sexy-framework/directives';
+
+let codeExamples = new Map();
+
+codeExamples.set('child', `
+<!-- Example child component -->
+Init value: {{ value }}
+<button @click="$emit('input', 'Children text')">Change value</button>
+
+<script>
+let value = p(null);
+</script>
+`);
+
+codeExamples.set('parent', `
+<!-- Parent -->
+<div>Parent text: {{ text }}</div>
+<example (bind)="text"></example>
+
+<script>
+import { bind } from 'sexy-framework/directives';
+let text = o('Parent text');
+</script>
+`);
+
+
+codeExamples.set('emit', `
+<!-- Parent -->
+<div>Parent text: {{ text }}</div>
+<example :value="text" @input="changed(event)"></example>
+
+<script>
+import { bind } from 'sexy-framework/directives';
+let text = o('Parent text');
+
+function changed(event) {
+	text(event.detail);
+}
+</script>
+`);
+</script>

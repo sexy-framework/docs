@@ -16,6 +16,6 @@
     "fastify-static": "^2.7.0",
     "fastify-url-data": "^2.4.0",
     "highlight.js": "^10.1.1",
-    "sexy-server": "^0.3.4"
+    "sexy-server": "^0.4.3"
   }
 }

@@ -1,0 +1,10 @@
+<div>
+	<!-- Parent -->
+	<div>Parent text: {{ text }}</div>
+	<examples.components.bindchild (bind)="text"></examples.components.bindchild>
+</div>
+
+<script>
+import { bind } from 'sexy-framework/directives';
+let text = o('Parent text');
+</script>

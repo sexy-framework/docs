@@ -1,1 +1,25 @@
-lazy-load-components.sexy
+<div class="container content">
+	<p>
+		Для асинхронной загрузки компонентов используется атрибут lazy, если используется авто-импорт:
+	</p>
+	<docs.code type="html" code="<example lazy></example>"></docs.code>
+	<p>
+		Если компонент подключается вручную, то для его ленивиой загрузки нужно просто использовать соотвествующий импорт:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('example')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('example', `
+<dynamic :is="Component"></dynamic>
+
+<script>
+const Component = import('./components/async.sexy');
+</script>
+`);
+
+</script>

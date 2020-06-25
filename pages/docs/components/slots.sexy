@@ -1,1 +1,248 @@
-usage.sexy
+<div class="container content">
+	<p>
+		Sexy предоставляет API распределения контента, используя элемент slot в качестве точек распространения контента.
+	</p>
+	<p>
+		Например, это позволит составлять такие компоненты:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('example')"></docs.code>
+	<p>
+		Для этого navigation-link должен быть например таким:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot')"></docs.code>
+	<p>
+		При отрисовке компонента slot  будет заменён на «Ваш профиль». Слоты могут содержать любой код шаблона, в том числе HTML:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-1')"></docs.code>
+	<p>
+		Или даже другие компоненты:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-2')"></docs.code>
+	<p>
+		Если шаблон navigation-link не содержит элемент slot, любой переданный контент будет просто проигнорирован.
+	</p>
+
+
+	<br>
+	<h2 class="title">
+		Значение по умолчанию
+	</h2>
+	<p>
+		Бывает полезным указать запасное содержимое слота (т.е. по умолчанию), которое будет отображаться только тогда, когда ничего не передавалось в слот. Например, в компоненте submit-button:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-3')"></docs.code>
+	<p>
+		Было бы удобно если текст «Отправить» отображался внутри button большую часть времени. Чтобы сделать «Отправить» в качестве содержимого по умолчанию, необходимо поместить его между тегами slot:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-4')"></docs.code>
+	<p>
+		Теперь, при использовании submit-button в родительском компоненте и не указывая содержимое для слота:
+	</p>
+	<docs.code type="html" code='<submit-button></submit-button>'></docs.code>
+	<p>
+		отобразится содержимое по умолчанию — «Отправить»:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-5')"></docs.code>
+	<p>
+		Но если указать содержимое:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-6')"></docs.code>
+	<p>
+		Тогда оно будет использовано для отображения:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('slot-7')"></docs.code>
+	
+
+	<br>
+	<h2 class="title">
+		Именованные слоты
+	</h2>
+	<p>
+		Зачастую удобно иметь несколько слотов. К примеру, для компонента base-layout со следующим шаблоном:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('named-1')"></docs.code>
+	<p>
+		В таких случаях элементу slot можно указать специальный атрибут name, который используется для определения дополнительных слотов:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('named-2')"></docs.code>
+	<p>
+		Обычный slot без name неявно имеет имя «default».
+	</p>
+	<p>
+		Чтобы указать содержимое для именованного слота, нужно использовать атрибут slot на template, передав имя слота аргументом slot:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('named-3')"></docs.code>
+	<p>
+		Теперь всё внутри элементов template будет передаваться в соответствующие слоты. Предполагается, что любое содержимое, не обёрнутое в template с использованием slot, предназначается для слота по умолчанию.
+	</p>
+	<p>
+		Однако, можно и явно обернуть в template содержимое слота по умолчанию:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('named-4')"></docs.code>
+	<p>
+		В обоих случаях, итоговый HTML будет таким:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('named-5')"></docs.code>
+
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+// import { html } from 'sexy-framework/directives';
+
+let codeExamples = new Map();
+
+codeExamples.set('example', `
+<navigation-link url="/profile">
+  Ваш профиль
+</navigation-link>
+`);
+
+codeExamples.set('parent', `
+<!-- Parent -->
+<div>Parent text: {{ text }}</div>
+<example (bind)="text"></example>
+
+<script>
+import { bind } from 'sexy-framework/directives';
+let text = o('Parent text');
+</script>
+`);
+
+
+codeExamples.set('slot', `
+<a :href="url" class="nav-link">
+  <slot></slot>
+</a>
+
+<script>
+let url = p('#');
+</script>
+`);
+
+
+codeExamples.set('slot-1', `
+<navigation-link url="/profile">
+  <!-- Используем компонент для добавления иконки -->
+  <font-awesome-icon name="user"></font-awesome-icon>
+  Ваш профиль
+</navigation-link>
+`);
+
+codeExamples.set('slot-2', `
+<navigation-link url="/profile">
+  <!-- Используем компонент для добавления иконки -->
+  <font-awesome-icon name="user"></font-awesome-icon>
+  Ваш профиль
+</navigation-link>
+`);
+
+codeExamples.set('slot-3', `
+<button type="submit">
+  <slot></slot>
+</button>
+`);
+
+codeExamples.set('slot-4', `
+<button type="submit">
+  <slot>Отправить</slot>
+</button>
+`);
+
+codeExamples.set('slot-5', `
+<button type="submit">
+  Отправить
+</button>
+`);
+
+codeExamples.set('slot-6', `
+<submit-button>
+  Сохранить
+</submit-button>
+`);
+
+codeExamples.set('slot-7', `
+<button type="submit">
+  Сохранить
+</button>
+`);
+
+
+// Named
+
+codeExamples.set('named-1', `
+<div class="container">
+  <header>
+    <!-- Мы хотим отобразить контент заголовка здесь -->
+  </header>
+  <main>
+    <!-- Мы хотим отобразить основной контент здесь -->
+  </main>
+  <footer>
+    <!-- Мы хотим отобразить контент подвала здесь -->
+  </footer>
+</div>
+`);
+
+codeExamples.set('named-2', `
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+`);
+
+codeExamples.set('named-3', `
+<base-layout>
+  <template slot="header">
+    <h1>Здесь мог быть заголовок страницы</h1>
+  </template>
+
+  <p>Параграф для основного контента.</p>
+  <p>И ещё один.</p>
+
+  <template slot="footer">
+    <p>Некая контактная информация</p>
+  </template>
+</base-layout>
+`);
+
+codeExamples.set('named-4', `
+<base-layout>
+  <template slot="header">
+    <h1>Здесь мог быть заголовок страницы</h1>
+  </template>
+
+  <template slot="default">
+    <p>Параграф для основного контента.</p>
+    <p>И ещё один.</p>
+  </template>
+
+  <template slot="footer">
+    <p>Некая контактная информация</p>
+  </template>
+</base-layout>
+
+`);
+
+codeExamples.set('named-5', `
+<div class="container">
+  <header>
+    <h1>Здесь мог быть заголовок страницы</h1>
+  </header>
+  <main>
+    <p>Параграф для основного контента.</p>
+    <p>И ещё один.</p>
+  </main>
+  <footer>
+    <p>Некая контактная информация</p>
+  </footer>
+</div>
+`);
+</script>

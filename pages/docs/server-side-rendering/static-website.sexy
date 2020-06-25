@@ -1,0 +1,10 @@
+<div class="container content">
+	<p>
+		В разработке...
+	</p>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+</script>

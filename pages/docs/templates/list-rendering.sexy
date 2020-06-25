@@ -1,12 +1,30 @@
-<div class="container">
-	<h1 class="title">Lists</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
-	
+<div class="container content">
+	<p>
+		Используйте блок \@each / \@endeach для отрисовки списка элементов на основе массива данных. У \@each особый синтаксис записи: item in items, где items — исходный массив, а item — ссылка на текущий элемент массива:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('each')"></docs.code>
+	<p>
+		Результат:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('each-result')"></docs.code>
+	<p>
+		Внутри блока \@each нам доступны свойства из области видимости родителя. У \@each также есть второй опциональный параметр с индексом текущего элемента.
+	</p>
+	<docs.code type="html" :code="codeExamples.get('each-parent')"></docs.code>
+	<p>
+		Результат:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('each-parent-result')"></docs.code>
+
+
+	<br>
+	<h2 class="title">
+		Атрибут key
+	</h2>
+	<p>
+		Чтобы Sexy работал быстро и переиспользовал готовые элементы обязательно указывать уникальный атрибут key для каждого элемента:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('each')"></docs.code>
 </div>
 
 <script>
@@ -14,12 +32,72 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('object', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('each', `
+<ul id="example-1">
+  @each(item in items)
+    <li :key="item.message">
+      {{ item.message }}
+    </li>
+  @endeach
+</ul>
+
+<script>
+let items = o([
+	{ message: 'Foo' },
+	{ message: 'Bar' }
+])
+</script>
 `);
 
-codeExamples.set('array', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('each-result', `
+<ul id="example-1">
+	<li data-key="Foo">Foo</li>
+	<li data-key="Bar">Bar</li>
+</ul>
 `);
+
+codeExamples.set('each-parent', `
+<ul id="example-1">
+  @each(item, index in items)
+    <li :key="key">
+      {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+  @endeach
+</ul>
+
+<script>
+let parentMessage = o('Message');
+
+let items = o([
+	{ message: 'Foo' },
+	{ message: 'Bar' }
+])
+</script>
+`);
+
+codeExamples.set('each-parent-result', `
+<ul id="example-1">
+	<li data-key="0">Message - 0 - Foo</li>
+	<li data-key="1">Message - 1 - Bar</li>
+</ul>
+`);
+
+codeExamples.set('each-syntax', `
+<ul id="example-1">
+  @each(item in items)
+    <li :key="item.message">
+      {{ item.message }}
+    </li>
+  @endeach
+</ul>
+
+<script>
+let items = o([
+	{ message: 'Foo' },
+	{ message: 'Bar' }
+])
+</script>
+`);
+
 
 </script>

@@ -1,0 +1,4 @@
+<button @click="count(count() + 1)">Счётчик кликов — {{ count }}</button>
+<script>
+let count = o(0);
+</script>

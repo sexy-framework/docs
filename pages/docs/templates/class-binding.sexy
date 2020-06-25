@@ -1,18 +1,88 @@
-<div class="container">
-	<h1 class="title">Object syntax</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('object')"></docs.code>
-	<h1 class="title">Array syntax</h1>
-	<div class="content">
-		<p>
-			The most basic form of data binding is text interpolation using the “Mustache” syntax (double curly braces):
-		</p>
-	</div>
-	<docs.code type="html" :code="codeExamples.get('array')"></docs.code>
+<div class="container content">
+	<p>
+		Часто возникает необходимость динамически изменять CSS-классы и inline-стили элементов в зависимости от состояния приложения. Поскольку и то и другое атрибуты, мы можем использовать :. Sexy предоставляет дополнительные возможности для работы с class и style. Эти атрибуты кроме строковых значений могут принимать массивы или объекты.
+	</p>
+	<h2 class="title">
+		Использование объектов
+	</h2>
+	<p>
+		Для динамической установки или удаления CSS-классов можно передавать объект:
+	</p>
+	<docs.code type="html" code='<div :class="{ active: isActive }"></div>'></docs.code>
+
+	<p>
+		Запись выше означает, что наличие класса active будет определяться истинностью параметра isActive.
+	</p>
+	<p>
+		Таким образом можно управлять несколькими классами, добавляя в объект другие поля. Кроме того, :class можно использовать совместно с обычным атрибутом class.
+	</p>
+	<docs.code type="html" :code="codeExamples.get('object-example')"></docs.code>
+	<p>
+		При использовании таких данных:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('object-example-data')"></docs.code>
+	<p>
+		В результате получится:
+	</p>
+	<docs.code type="html" code='<div class="statis active"></div>'></docs.code>
+	<p>
+		Список классов элемента обновится при изменении isActive (если hasError статичная переменная). Например, если isActive станет false, то значением атрибута class будет "static".
+	</p>
+	<p>
+		Sexy директивы позволяет применять свой код для обработки значений и применений их для DOM элементов. Вы можете навешивать любые события, и изменять DOM элемент как угодно.
+	</p>
+	<p>
+		Используемый объект необязательно указывать прямо в шаблоне, можно создать вычисляемую переменную:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('object-example-computed')"></docs.code>
+	<p>
+		Результат будет таким же
+	</p>
+	<br>
+	<h2 class="title">
+		Использование массивов
+	</h2>
+	<p>
+		В :class можно передать и массив
+	</p>
+	<docs.code type="html" :code="codeExamples.get('array-example')"></docs.code>
+	<p>
+		В результате получим:
+	</p>
+	<docs.code type="html" code='<div class="visible"></div>'></docs.code>
+	
+	<h2 class="title is-4">
+		Можно использовать и смешанный синтаксис
+	</h2>
+	<docs.code type="html" code='<div :class="[{ active: isActive }, errorClass]"></div>'></docs.code>
+	
+	<br>
+	<h2 class="title">
+		Использование с копмонентами
+	</h2>
+	<p>
+		При использовании атрибута class на пользовательском компоненте, классы будут добавлены к его корневому элементу. Собственные классы элемента при этом не будут потеряны.
+	</p>
+	<p>
+		Возьмём, к примеру, такой компонент (my-button):
+	</p>
+	<docs.code type="html" code='<div class="button">Click me</div>'></docs.code>
+	<p>
+		То при использовании данного компонента, если указать дополнительные классы на компоненте:
+	</p>
+	<docs.code type="html" code='<my-button class="red"></my-button>'></docs.code>
+	<p>
+		В результате отрисовки получим:
+	</p>
+	<docs.code type="html" code='<div class="button red">Click me</div>'></docs.code>
+	<p>
+		То же самое справедливо для связывания классов с данными:
+	</p>
+	<docs.code type="html" code='<my-button :class="{ active: isActive }"></my-button>'></docs.code>
+	<p>
+		Если isActive истинно, результирующий HTML будет:
+	</p>
+	<docs.code type="html" code='<div class="button active">Click me</div>'></docs.code>
 </div>
 
 <script>
@@ -20,12 +90,44 @@ export { Layout } from '@layouts/docs.sexy';
 
 let codeExamples = new Map();
 
-codeExamples.set('object', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('object-example', `
+<div
+	class="static"
+	:class="{ active: isActive, 'text-danger': hasError }"
+></div>
 `);
 
-codeExamples.set('array', `
-<span>Message: {{ msg }}</span>
+codeExamples.set('object-example-data', `
+<script>
+Let isActive = o(true); // реактивная переменная
+Let hasError = false; // обычная переменная
+</script>
+`);
+
+codeExamples.set('object-example-computed', `
+<div
+	class="static"
+	:class="classObject"
+></div>
+
+<script>
+let isActive = o(true); // реактивная переменная
+let hasError = false; // обычная переменная
+// 
+let classObject = () => {
+  return { active: isActive, 'text-danger': hasError }
+}
+</script>
+`);
+
+
+codeExamples.set('array-example', `
+<div :class="[activeClass, errorClass]"></div>
+
+<script>
+let activeClass = o(‘visible’);
+let errorClass = o(‘’);
+</script>
 `);
 
 </script>

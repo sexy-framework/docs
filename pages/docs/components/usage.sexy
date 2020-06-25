@@ -1,0 +1,121 @@
+<div class="container content">
+	<p>
+		Вот пример Sexy компонента:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('example')"></docs.code>
+	<p>
+		Компоненты — это переиспользуемые экземпляры Sexy со своим именем. Имя компонента указывается 3-мя способами:
+	</p>
+	<ol type="1">
+	    <li>Авто-импорт: берется из названия файла</li>
+	    <li>Ручной импорт компонента</li>
+	    <li>Глобальные компоненты (не рекомендуется использовать)</li>
+	</ol>
+
+	<br>
+	<h2 class="title">
+		Автоматический импорт
+	</h2>
+	<p>
+		Если данный компонент находится в (при условии, что path в sexy-loader указан components)
+	</p>
+	<pre>
+		./components/basics/button-counter.sexy
+	</pre>
+	<p>
+		Его можно использовать как пользовательский тег внутри другого Sexy компонента, с помощью:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('auto-import')"></docs.code>
+	
+	<br>
+	<h2 class="title">
+		Ручной импорт
+	</h2>
+	<p>
+		Также вы можете использовать вручную импортировать компоненты. Для этого необходимо называть компонент с заглавной буквы:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('manual')"></docs.code>
+
+	<br>
+	<h2 class="title">
+		Глобальная регистрация
+	</h2>
+	<p>
+		Компоненты можно регистрировать глобально, для этого в вашем main.js необходимо указать:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('global')"></docs.code>
+	<p>
+		И данный компонент можно использовать без импорта везде:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('global-example')"></docs.code>
+	
+	<br>
+	<h2 class="title">
+		Повторное использование
+	</h2>
+	<p>
+		Компоненты можно переиспользовать столько раз, сколько захотите:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('multi')"></docs.code>
+	<p>
+		Результат:
+	</p>
+	<figure class="result">
+		<examples.components.counter></examples.components.counter>
+		<examples.components.counter></examples.components.counter>
+		<examples.components.counter></examples.components.counter>
+	</figure>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('example', `
+<button @click="count(count() + 1)">Счётчик кликов — {{ count }}</button>
+<script>
+let count = o(0);
+</script>
+`);
+
+codeExamples.set('auto-import', `
+<basics.button-counter></basics.button-counter>
+
+<script>
+// тут пусто
+</script>
+`);
+
+codeExamples.set('manual', `
+<ButtonCounter></ButtonCounter>
+
+<script>
+import ButtonCounter from './components/basics/button-counter.sexy';
+</script>
+`);
+
+codeExamples.set('global', `
+import { registerComponent } from 'sexy-framework/render';
+
+import ButtonCounter from './components/basics/button-counter.sexy';
+
+registerComponent('ButtonCounter', ButtonCounter);
+`);
+
+codeExamples.set('global-example', `
+<ButtonCounter></ButtonCounter>
+
+<script>
+// тут пусто
+</script>
+`);
+
+codeExamples.set('multi', `
+<div id="components-demo">
+  <ButtonCounter></ButtonCounter>
+  <ButtonCounter></ButtonCounter>
+  <ButtonCounter></ButtonCounter>
+</div>
+`);
+</script>

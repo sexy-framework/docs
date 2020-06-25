@@ -1,0 +1,122 @@
+<div class="container content">
+	<p>
+		Sexy автоматически генерирует конфигурацию согласно структуре файлов в папке pages.
+	</p>
+	<p>
+		Структура файлов:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('routes-1')"></docs.code>
+	<p>
+		автоматически сгенерирует:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('routes-1-r')"></docs.code>
+	<br>
+	<h2 class="title">
+		Динамическая маршрутизация
+	</h2>
+	<p>
+		Структура файлов:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('routes-2')"></docs.code>
+	<p>
+		автоматически сгенерирует:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('routes-2-r')"></docs.code>
+	<br>
+	<h2 class="title">
+		Вложенная маршрутизация
+	</h2>
+	<p>
+		Структура файлов:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('routes-3')"></docs.code>
+	<p>
+		автоматически сгенерирует:
+	</p>
+	<docs.code type="html" :code="codeExamples.get('routes-3-r')"></docs.code>
+</div>
+
+<script>
+export { Layout } from '@layouts/docs.sexy';
+
+let codeExamples = new Map();
+
+codeExamples.set('routes-1', `
+pages/
+--| team/
+-----| index.sexy
+-----| about.sexy
+--| index.sexy
+`);
+
+
+codeExamples.set('routes-1-r', `
+routes: [
+  {
+    name: 'index',
+    path: '/',
+    component: 'pages/index.sexy'
+  },
+  {
+    name: 'team',
+    path: '/team/',
+    component: 'pages/team/index.sexy'
+  },
+  {
+    name: 'team-about',
+    path: '/team/about',
+    component: 'pages/team/about.sexy'
+  }
+]
+`);
+
+
+codeExamples.set('routes-2', `
+pages/
+--| users/
+-----| _id.sexy
+-----| index.sexy
+`);
+
+
+codeExamples.set('routes-2-r', `
+routes: [
+  {
+    name: 'users',
+    path: '/users/',
+    component: 'pages/users/index.sexy'
+  },
+  {
+    name: 'users-id',
+    path: '/users/:id',
+    component: 'pages/users/_id.sexy'
+  }
+]
+`);
+
+codeExamples.set('routes-3', `
+pages/
+--| users/
+-----| _id.sexy
+--| users.sexy
+`);
+
+
+codeExamples.set('routes-3-r', `
+router: {
+  routes: [
+    {
+      path: '/users',
+      component: 'pages/users.sexy',
+      children: [
+        {
+          path: ':id?',
+          component: 'pages/users/_id.sexy',
+          name: 'users-id'
+        }
+      ]
+    }
+  ]
+}
+`);
+</script>

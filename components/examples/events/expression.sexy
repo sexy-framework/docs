@@ -1,0 +1,8 @@
+<div>
+	<button class="button is-small is-light" @click="counter(counter() + 1)">+1</button>
+	<p>Кнопка выше была нажата {{ counter }} раз</p>
+</div>
+
+<script>
+let counter = o(1);
+</script>
