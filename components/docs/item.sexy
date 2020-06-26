@@ -1,15 +1,17 @@
 <li>
-	<a @click="goTo(name())" :class="{ 'is-active': active, }">{{ name }}</a>
+	<a @click="goTo(name())" :class="{ 'is-active': active, }">{{ translations[name] }}</a>
 	@if(items.length > 0)
 	<ul :class="{ 'is-hidden': !active }">
 		@each(item, key in items)
-    	<li :key="key"><a @click="goTo(name, item)">{{ item }}</a></li>
+    	<li :key="key"><a @click="goTo(name, item)">{{ translations[item] }}</a></li>
     	@endeach
 	</ul>
 	@endif
 </li>
 
 <script>
+import { translations } from '../../plugins/translations';
+
 let name = p([]);
 let items = p([]);
 let active = p(false);

@@ -7,30 +7,33 @@
 
 <script async>
 import { html } from 'sexy-framework/directives'
+import { lazy } from 'sexy-framework/render'
 
 let code = p('No code');
 let type = p('html');
 
-let highlightedCode = o(1);
+let highlightedCode = o('Loading...');
 
-async function highlight()
+function highlight()
 {
-	const hljs = await import('highlight.js');
+	const hljs = import('highlight.js');
 
-	let value = code();
-	
-	value = value
-		.replace(/^\n/g, '')
-		.replace(/\t/g, '  ');
+	lazy(hljs, hljs => {
+		let value = code();
+		
+		value = value
+			.replace(/^\n/g, '')
+			.replace(/\t/g, '  ');
 
-	value = hljs.highlight(type(), value).value;
+		value = hljs.highlight(type(), value).value;
 
-	highlightedCode(value);
+		highlightedCode(value);
+	});
 }
 
-async function mounted() {
+function mounted() {
 	if($render) {
-		await highlight();
+		highlight();
 	}
 }
 </script>

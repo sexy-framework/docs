@@ -1,0 +1,15 @@
+<i class="icon" (html)="icon"></i>
+
+<script>
+import feather from 'feather-icons';
+import { html } from 'sexy-framework/directives';
+
+let icon = o('');
+let type = p(null);
+
+if($render) {
+	if(type()) {
+		icon(feather.icons[type()].toSvg());
+	}
+}
+</script>

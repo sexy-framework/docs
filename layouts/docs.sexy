@@ -1,11 +1,11 @@
 <nav.bar></nav.bar>
 
 <div class="columns">
-    <div class="column is-one-fifth" style="width: 300px; background-color: #f9f9f9; padding: 40px;">
+    <div class="column is-one-fifth" style="width: 310px; background-color: #f9f9f9; padding: 40px 20px 40px 30px;">
         <aside class="menu">
 			@each(header in Object.keys(items))
 			<p class="menu-label" :key="header">
-                {{ header }}
+                {{ translations[header] }}
             </p>
             <ul class="menu-list">
             @each(item in items[header])
@@ -41,6 +41,8 @@
 
 
 <script>
+import { translations } from '../plugins/translations';
+
 let items = {
 	'intro': [
 		{
@@ -48,7 +50,7 @@ let items = {
 			items: [],
 		}, {
 			name: 'Installation',
-			items: ['Framework', 'Server-side render']
+			items: ['Sexy application', 'Manual setup']
 		}
 	],
 	'Single file components': [
@@ -57,40 +59,40 @@ let items = {
 			items: [],
 		}, {
 			name: "Reactivity",
-			items: ['Observables', 'Computeds', 'Watches'],
+			items: ['Stateful', 'Computed', 'Watch'],
 		}, {
 			name: "Template syntax",
-			items: ['Text', 'Attributes', 'Using JavaScript Expressions', 'Directives'],
+			items: ['Text', 'Attributes', 'JavaScript Expressions', 'Directives'],
 		}
 	],
 	'Templates': [
 		{
 			name: "Class binding",
-			items: ['Object syntax', 'Array syntax'],
+			items: ['Object syntax', 'Array syntax', 'Mixed syntax', 'Usage with components'],
 		}, {
 			name: "Style binding",
-			items: ['Object syntax', 'Array syntax'],
+			items: ['Object syntax', 'Array syntax', 'Usage with components'],
 		}, {
 			name: "Conditional rendering",
-			items: ['Conditional groups', 'Mixed rendering'],
+			items: [],
 		}, {
 			name: "List rendering",
 			items: [],
 		}, {
 			name: "Events",
-			items: ['Handlers', 'Inline handlers', 'Why listeners in HTML'],
+			items: ['Bind directive', 'Emit'],
 		}, {
 			name: "Form input binding",
-			items: ['Input', 'Textarea', 'Radio', 'Checkbox', 'Select'],
+			items: ['Input', 'Textarea'], // , 'Radio', 'Checkbox', 'Select'
 		}, {
 			name: "Directives",
-			items: ['Usage', 'Custom directive'],
+			items: [],
 		}
 	],
 	'Components': [
 		{
 			name: "Usage",
-			items: [],
+			items: ['Auto import', 'Manual import', 'Globals', 'Re-usage'],
 		}, {
 			name: "Properties",
 			items: [],
@@ -99,16 +101,16 @@ let items = {
 			items: [],
 		}, {
 			name: "Slots",
-			items: ['Named slots', 'Notag option']
+			items: ['Default value', 'Named slots']
 		}, {
 			name: "Dynamic components",
 			items: [],
 		}, {
-			name: "Lazy load components",
+			name: "Lazy loading",
 			items: [],
 		}, {
 			name: "Magic variables",
-			items: ['References', 'Parent', 'Element', 'Render', 'Props']
+			items: ['$refs', '$el', '$render']
 		} 
 	],
 	'Transitions': [
@@ -129,22 +131,22 @@ let items = {
 			items: [],
 		}, {
 			name: "Pages",
-			items: ['Routing', 'Layouts'],
+			items: [],
 		}, {
 			name: "Routing",
-			items: ['CSS entrypoints', 'Webpack']
+			items: ['Dynamic routing', 'Nested routing']
 		}, {
 			name: "Layouts",
-			items: ['CSS entrypoints', 'Webpack']
+			items: ['Default layout', 'Error layout', 'Custom layout']
 		}, {
 			name: "Config",
-			items: ['CSS entrypoints', 'Webpack']
+			items: []
 		}, {
 			name: "Static website",
 			items: [],
 		}, {
 			name: "Advanced",
-			items: ['Custom server']
+			items: []
 		}, 
 	],
 }

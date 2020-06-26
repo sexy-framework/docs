@@ -33,7 +33,7 @@
 	<p>
 		Также и при работе с массивами и объектами. Чтобы изменить значение объекта, его нужно сначала получить, изменить, а потом передать. Кажется избыточным, но на самом деле это не так. Такой подход позволяет защититься от не нужных изменениях DOM из коробки.
 	</p>
-	<docs.code type="html" :code="codeExamples.get('state')"></docs.code>
+	<docs.code type="javascript" :code="codeExamples.get('state')"></docs.code>
 
 	<br>
 	<h2 class="title">
@@ -42,7 +42,7 @@
 	<p>
 		Вычисляемые переменные – это переменные, которые используют реактивные переменные для получения какого-то нового значения. Например, фильтр данных.
 	</p>
-	<docs.code type="html" :code="codeExamples.get('computed')"></docs.code>
+	<docs.code type="javascript" :code="codeExamples.get('computed')"></docs.code>
 	
 	<h2 class="title">
 		Ожидание изменений реактивных переменных (watch)
@@ -50,7 +50,7 @@
 	<p>
 		За изменениями любой реактивной переменной можно следить и совершать какие-либо действия с помощью метода watch.
 	</p>
-	<docs.code type="html" :code="codeExamples.get('watch')"></docs.code>
+	<docs.code type="javascript" :code="codeExamples.get('watch')"></docs.code>
 	
 </div>
 
