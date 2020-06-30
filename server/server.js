@@ -58,7 +58,10 @@ sexy.routes((path, route) => {
 		const uid = url.path + (url.query || '_');
 
 		cache(uid, (callback) => {
-			sexy.build({ route: path }, (html) => {
+			sexy.build({ route: path }, {
+				req: request,
+				res: reply,
+			}, (html) => {
 				callback(html);
 			});
 		}, (page) => {

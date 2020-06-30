@@ -11,14 +11,14 @@
 		<li>Выпадающие списки используют свойство value и событие change</li>
 	</ol>
 	<br>
-	<h2>
+	<h2 id="input">
 		Input
 	</h2>
 	<docs.code type="html" :code="codeExamples.get('input')"></docs.code>
 	<figure class="result">
 		<examples.bind.input></examples.bind.input>
 	</figure>
-	<h2>
+	<h2 id="textarea">
 		Textarea
 	</h2>
 	<docs.code type="html" :code="codeExamples.get('input')"></docs.code>

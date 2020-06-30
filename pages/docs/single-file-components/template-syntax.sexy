@@ -1,5 +1,5 @@
 <div class="container content">
-	<h2 class="title">
+	<h2 class="title" id="text">
 		Текст
 	</h2>
 	<p>
@@ -11,7 +11,7 @@
 	</p>
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="attributes">
 		Атрибуты
 	</h2>
 	<p>
@@ -26,7 +26,7 @@
 	</p>
 	
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="javascript-expressions">
 		Использование Javascript expressions
 	</h2>
 	<p>
@@ -46,7 +46,7 @@
 	</p>
 	<docs.code type="html" :code="codeExamples.get('stateful')"></docs.code>
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="directives">
 		Директивы
 	</h2>
 	<p>

@@ -2,7 +2,7 @@
 	<p>
 		Часто возникает необходимость динамически изменять CSS-классы и inline-стили элементов в зависимости от состояния приложения. Поскольку и то и другое атрибуты, мы можем использовать :. Sexy предоставляет дополнительные возможности для работы с class и style. Эти атрибуты кроме строковых значений могут принимать массивы или объекты.
 	</p>
-	<h2 class="title">
+	<h2 class="title" id="object-syntax">
 		Использование объектов
 	</h2>
 	<p>
@@ -39,7 +39,7 @@
 		Результат будет таким же
 	</p>
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="array-syntax">
 		Использование массивов
 	</h2>
 	<p>
@@ -51,13 +51,13 @@
 	</p>
 	<docs.code type="html" code='<div class="visible"></div>'></docs.code>
 	
-	<h2 class="title is-4">
+	<h2 class="title is-4" id="mixed-syntax">
 		Можно использовать и смешанный синтаксис
 	</h2>
 	<docs.code type="html" code='<div :class="[{ active: isActive }, errorClass]"></div>'></docs.code>
 	
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="usage-with-components">
 		Использование с копмонентами
 	</h2>
 	<p>

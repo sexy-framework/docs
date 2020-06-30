@@ -24,7 +24,7 @@
 
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="default-value">
 		Значение по умолчанию
 	</h2>
 	<p>
@@ -54,7 +54,7 @@
 	
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="named-slots">
 		Именованные слоты
 	</h2>
 	<p>

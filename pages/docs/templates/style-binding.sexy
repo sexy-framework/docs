@@ -1,5 +1,5 @@
 <div class="container content">
-	<h2 class="title">
+	<h2 class="title" id="object-syntax">
 		Использование объектов
 	</h2>
 	<p>
@@ -14,7 +14,7 @@
 		Можно использовать и вычисляемые свойства, возвращающие объекты стилей.
 	</p>
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="array-syntax">
 		Использование массивов
 	</h2>
 	<p>
@@ -23,7 +23,7 @@
 	<docs.code type="html" code='<div :style="[baseStyles, overridingStyles]"></div>'></docs.code>
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="usage-with-components">
 		Использование с копмонентами
 	</h2>
 	<p>

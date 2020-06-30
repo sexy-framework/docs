@@ -59,48 +59,39 @@
 <section class="hero">
     <div class="hero-body">
         <div class="container">
-            <h2 class="title is-3">
-                Реактивные компоненты
-            </h2>
-            <div class="subtitle">
-                Измените данные и Sexy framework очень эффективно обновит HTML код страницы
-            </div>
-            <div class="columns">
+            <div class="columns is-variable is-8">
                 <div class="column">
+                	 <h2 class="title is-3">
+		                Реактивные компоненты
+		            </h2>
+		            <div class="subtitle">
+		                Измените данные и Sexy framework очень эффективно обновит HTML код страницы
+		            </div>
                     <docs.code :code='counter' style="border: 1px solid #dfdfdf;"></docs.code>
-                </div>
-                <div class="column">
+                    <br>
                     <examples.components.counter class="button"></examples.components.counter>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="hero">
-    <div class="hero-body">
-        <div class="container">
-            <h2 class="title is-3">
-                Нативно-быстрый
-            </h2>
-            <div class="subtitle">
-               Sexy использует нативный код и частичную гидратацию
-            </div>
-            <div class="columns">
-                <div class="column content">
-					В среднем, PageSpeed метрики (FID, TTI) лучше в 3-4 раза, чем во всех популярных фреймворков.
-					<br><br>
-                	В сравнение с NuxtJs, Sexy framework быстрее гидрирует:
-                	<ol type="1">
-                		<li>Динамические компоненты в 4.5 раза</li>
-                		<li>Статичные компоненты в 3.5 раза</li>
-                		<li>Статичные компоненты с ивентами в 3 раза</li>
-                		<li>Быстрее гидрирует динамические компоненты в 4.5 раза</li>
-                	</ol>
-                	<br>
-                	Также Sexy быстрее гидрирует компоненты в 10 раз, чем Svelte, хотя мы такие похожие...
+                <div class="column">
+                    <h2 class="title is-3">
+		                Нативно-быстрый
+		            </h2>
+		            <div class="subtitle">
+		               Sexy использует нативный код и частичную гидратацию
+		            </div>
+		            <div class="content">
+						В среднем, PageSpeed метрики (FID, TTI) лучше в 3-4 раза, чем во всех популярных фреймворков.
+						<br><br>
+	                	В сравнение с NuxtJs, Sexy framework быстрее гидрирует:
+	                	<ol type="1">
+	                		<li>Динамические компоненты в 4.5 раза</li>
+	                		<li>Статичные компоненты в 3.5 раза</li>
+	                		<li>Статичные компоненты с ивентами в 3 раза</li>
+	                		<li>Быстрее гидрирует динамические компоненты в 4.5 раза</li>
+	                	</ol>
+	                	<br>
+	                	Также Sexy быстрее гидрирует компоненты в 10 раз, чем Svelte, хотя мы такие похожие...
+		            </div>
                 </div>
-                <div class="column"></div>
             </div>
         </div>
     </div>

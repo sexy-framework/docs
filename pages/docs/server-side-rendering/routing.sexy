@@ -11,7 +11,7 @@
 	</p>
 	<docs.code type="html" :code="codeExamples.get('routes-1-r')"></docs.code>
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="dynamic-routing">
 		Динамическая маршрутизация
 	</h2>
 	<p>
@@ -23,7 +23,7 @@
 	</p>
 	<docs.code type="html" :code="codeExamples.get('routes-2-r')"></docs.code>
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="nested-routing">
 		Вложенная маршрутизация
 	</h2>
 	<p>

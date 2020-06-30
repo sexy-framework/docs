@@ -13,7 +13,7 @@
 	</ol>
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="auto-import">
 		Автоматический импорт
 	</h2>
 	<p>
@@ -28,7 +28,7 @@
 	<docs.code type="html" :code="codeExamples.get('auto-import')"></docs.code>
 	
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="manual-import">
 		Ручной импорт
 	</h2>
 	<p>
@@ -37,7 +37,7 @@
 	<docs.code type="html" :code="codeExamples.get('manual')"></docs.code>
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="globals">
 		Глобальная регистрация
 	</h2>
 	<p>
@@ -50,7 +50,7 @@
 	<docs.code type="html" :code="codeExamples.get('global-example')"></docs.code>
 	
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="re-usage">
 		Повторное использование
 	</h2>
 	<p>

@@ -1,43 +1,30 @@
-<nav.bar></nav.bar>
+<aside class="menu" style="position: fixed; left: 0;top: 0;bottom: 0;right: auto;width: 300px; background-color: #f9f9f9; padding: 30px 20px 30px 20px; overflow-y: scroll;">
+	@each(header in Object.keys(items))
+		<p class="menu-label" :key="header">
+            {{ translations[header] }}
+        </p>
+        <ul class="menu-list">
+            @each(item in items[header])
+            	<docs.item :active="isActive(header, item.name)" :name="item.name" :items="item.items" :key="item.name" @change="goTo(header, event)"></docs.item>
+			@endeach
+		</ul>
+	@endeach
+</aside>
 
 <div class="columns">
-    <div class="column is-one-fifth" style="width: 310px; background-color: #f9f9f9; padding: 40px 20px 40px 30px;">
-        <aside class="menu">
-			@each(header in Object.keys(items))
-			<p class="menu-label" :key="header">
-                {{ translations[header] }}
-            </p>
-            <ul class="menu-list">
-            @each(item in items[header])
-            <docs.item :active="isActive(header, item.name)" :name="item.name" :items="item.items" :key="item.name" @change="goTo(header, event)"></docs.item>
-			@endeach
-			</ul>
-			@endeach
-        </aside>
+    <div class="column is-one-fifth" style="width: 310px;">
     </div>
-    <div class="column">
-        <section class="section">
-            <div class="container" style="padding-bottom: 20px;">
-                <nav class="breadcrumb" aria-label="breadcrumbs">
-                    <ul>
-                        <li>
-                            <Route to="/">Sexy</Route>
-                        </li>
-                        <li>
-                            <Route to="/docs">Documentation</Route>
-                        </li>
-                        <li>
-                            <Route to="/docs/">Get started</Route>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+    <div class="column" style="position: relative;">
+    	<div style="position: sticky; top: 0; left: 0; right: 0; background-color: #fff; z-index: 100;">
+    		<nav.bar></nav.bar>
+    	</div>
+        <section class="section" style="padding-top: 40px;">
             <sexy />
         </section>
     </div>
 </div>
 
-<nav.footer></nav.footer>
+<!-- <nav.footer></nav.footer> -->
 
 
 <script>
@@ -80,7 +67,7 @@ let items = {
 			items: [],
 		}, {
 			name: "Events",
-			items: ['Bind directive', 'Emit'],
+			items: [],
 		}, {
 			name: "Form input binding",
 			items: ['Input', 'Textarea'], // , 'Radio', 'Checkbox', 'Select'
@@ -151,18 +138,37 @@ let items = {
 	],
 }
 
+let itemsPaths = makeUrls(items);
+
+function getPathFromName(name) 
+{
+	return name.toLowerCase().replace(/\s/g, '-');
+}
+
+function makeUrls(items) 
+{
+	let result = [];
+
+	for(let name in items) {
+		let subitems = [];
+
+		for(let name in items) {
+		}
+
+		result.push({
+			name: name,
+			pathname: getPathFromName(name),
+			items: subitems,
+		})
+	}
+}
+
 function isActive(dir, name) 
 {
-	let lastRoute = $router.lastRouteResolved();
+	let [ routeDir, routeName ] = $router.getPathname().replace(/^\/docs\//g, '').split('/');
 
-	if(!lastRoute) {
-		lastRoute = { url: '/' };
-	}
-
-	let [ routeDir, routeName ] = lastRoute.url.replace(/^\/docs\//g, '').split('/');
-
-	dir = dir.toLowerCase().replace(/\s/g, '-');
-	name = name.toLowerCase().replace(/\s/g, '-');
+	dir = getPathFromName(dir);
+	name = getPathFromName(name);
 	
 	if(routeDir === dir && routeName === name) {
 		return true;
@@ -174,12 +180,20 @@ function isActive(dir, name)
 function goTo(dir, event) {
 	let [ pageName, paragraph ] = event.detail;
 
-	dir = dir.toLowerCase().replace(/\s/g, '-');
+	dir = getPathFromName(dir);
 
-	let page = pageName.toLowerCase().replace(/\s/g, '-');
+	let page = getPathFromName(pageName);
 
-	console.log(dir, page, paragraph);
+	if(paragraph === null) {
+		paragraph = '';
+	} else {
+		paragraph = `#${ getPathFromName(paragraph) }`;
+		// getPathFromName(paragraph)
+		location.hash = paragraph;
+	}
 
-	$router.navigate(`/docs/${dir}/${page}`);
+	$router.navigate(`/docs/${dir}/${page}${ paragraph }`);
+
+	window.scrollTo(0, 0);
 }
 </script>

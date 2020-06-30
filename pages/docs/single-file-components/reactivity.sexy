@@ -8,7 +8,7 @@
 	<p>
 		Любые переменные, методы и функции нельзя называть с $. Так как код не инкапсулируется, возможны конфликты имен и будут возникать ошибки.
 	</p>
-	<h2 class="title">
+	<h2 class="title" id="stateful">
 		Реактивные переменные
 	</h2>
 	<p>
@@ -36,7 +36,7 @@
 	<docs.code type="javascript" :code="codeExamples.get('state')"></docs.code>
 
 	<br>
-	<h2 class="title">
+	<h2 class="title" id="computed">
 		Вычисляемые переменные
 	</h2>
 	<p>
@@ -44,7 +44,7 @@
 	</p>
 	<docs.code type="javascript" :code="codeExamples.get('computed')"></docs.code>
 	
-	<h2 class="title">
+	<h2 class="title" id="watch">
 		Ожидание изменений реактивных переменных (watch)
 	</h2>
 	<p>
