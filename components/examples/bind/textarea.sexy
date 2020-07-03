@@ -1,6 +1,10 @@
 <textarea class="textarea" (bind)="message" placeholder="введите несколько строчек"></textarea>
-<div>
-	Введённое многострочное сообщение: {{ message }}
+
+<div style="margin-top: 20px;">
+	Введённое многострочное сообщение: 
+	<pre>
+		{{ message }}
+	</pre>
 </div>
 
 

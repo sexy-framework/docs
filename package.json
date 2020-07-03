@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "sexy dev",
     "build": "sexy build",
-    "start": "sexy start"
+    "start": "sexy start",
+    "generate": "sexy generate"
   },
   "dependencies": {
     "bulma": "^0.9.0",
@@ -17,6 +18,6 @@
     "fastify-url-data": "^2.4.0",
     "feather-icons": "^4.28.0",
     "highlight.js": "^10.1.1",
-    "sexy-server": "^0.4.3"
+    "sexy-server": "file:../hawa/packages/sexy-server"
   }
 }

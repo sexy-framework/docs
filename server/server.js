@@ -36,7 +36,14 @@ fastify.setNotFoundHandler(function (request, reply) {
 // })
 
 function errorHandler(err, request, reply) {
-	sexy.build({ route: `/error-${ err.statusCode }` }, (page, err) => {
+
+	const url = request.urlData();
+
+	sexy.build(`/error-${ err.statusCode }`, {
+		request: {
+			pathname: url.path,
+		},
+	}, (page, err) => {
 		if(err) {
 			console.log(err);
 			errorHandler({
@@ -51,16 +58,16 @@ function errorHandler(err, request, reply) {
 }
 
 sexy.routes((path, route) => {
-	fastify.get(path, (request, reply) => {
 
+	fastify.get(path, (request, reply) => {
 		const url = request.urlData();
-		// console.log(url)
 		const uid = url.path + (url.query || '_');
 
 		cache(uid, (callback) => {
-			sexy.build({ route: path }, {
-				req: request,
-				res: reply,
+			sexy.build(path, {
+				request: {
+					pathname: url.path,
+				},
 			}, (html) => {
 				callback(html);
 			});

@@ -4,6 +4,13 @@ figure.highlight {
 	text-align: left !important;
 }
 
+figure.highlight,
+figure.highlight pre {
+    border-radius: 5px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+
 figure.result {
 	padding: 20px;
 	border: 1px solid #efefef;
@@ -17,6 +24,7 @@ figure.result {
 	padding-bottom: 0;
 	padding-top: 0;
 	position: absolute;
-	right: .25rem;
-	top: .25rem;
+	right: .5rem;
+	top: .5rem;
+	opacity: 0.5;
 }

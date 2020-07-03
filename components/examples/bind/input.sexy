@@ -1,6 +1,9 @@
-<div class="field">
-	<input class="input" (bind)="message" placeholder="отредактируй меня">
-	<p>Введённое сообщение: {{ message }}</p>
+<input class="input" (bind)="message" placeholder="отредактируй меня">
+
+<div style="margin-top: 20px;">
+	<pre>
+		Введённое сообщение: {{ message }}
+	</pre>
 </div>
 
 <script>

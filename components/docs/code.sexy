@@ -1,24 +1,40 @@
 <figure class="highlight">
-	<pre (html)="highlightedCode"></pre>
+	<pre class="hljs" (html)="highlightedCode"></pre>
 	<div class="label">
-		<div class="tag">{{ type }}</div>	
+		<div class="tag">{{ language }}</div>	
 	</div>
 </figure>
 
 <script async>
 import { html } from 'sexy-framework/directives'
-import { lazy } from 'sexy-framework/render'
+import { lazyArray } from 'sexy-framework/render'
 
 let code = p('No code');
 let type = p('html');
 
 let highlightedCode = o('Loading...');
 
+let language = () => {
+	if(type() === 'html') {
+		return 'sexy';
+	}
+
+	return type();
+}
+
 function highlight()
 {
-	const hljs = import('highlight.js');
+	const hljs = import('highlight.js/lib/core');
+	const javascript = import('highlight.js/lib/languages/javascript');
+	const html = import('highlight.js/lib/languages/xml');
+	const shell = import('highlight.js/lib/languages/shell');
+	
+	lazyArray([hljs, javascript, html, shell], (hljs, javascript, html, shell) => {
 
-	lazy(hljs, hljs => {
+		hljs.registerLanguage('javascript', javascript);
+		hljs.registerLanguage('html', html);
+		hljs.registerLanguage('console', shell);
+		
 		let value = code();
 		
 		value = value
