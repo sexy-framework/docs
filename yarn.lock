@@ -5694,30 +5694,32 @@ setprototypeof@1.1.0:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
   integrity sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==
 
-sexy-framework@^0.4.15, sexy-framework@^0.4.19:
-  version "0.4.19"
-  resolved "https://registry.yarnpkg.com/sexy-framework/-/sexy-framework-0.4.19.tgz#bab605792145489e169c003aea6222cfb3871221"
-  integrity sha512-O3Na8XC+7T8YNs+y52Y6PjbVA6pvF4CKgx0cEXknA76TdvyeLkz2dBZWpwT7UuHZNu/26P8efGKi/judF92B6Q==
+sexy-framework@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/sexy-framework/-/sexy-framework-0.5.0.tgz#4a1af2c85a1a0cbe3b08fa29666190ee7c536a67"
+  integrity sha512-ByAUmW5oIqA6j24KuFFYrR9HNzPyCFI0m8iA4wOGAHqgkGurmD6p2Clj+Ldo4RNpgaP7wrIGUGi7bMX6k24Szg==
   dependencies:
     "@babel/plugin-syntax-top-level-await" "^7.10.1"
     htmlparser2 "^4.1.0"
 
-sexy-loader@^0.4.15:
-  version "0.4.19"
-  resolved "https://registry.yarnpkg.com/sexy-loader/-/sexy-loader-0.4.19.tgz#02a7c523a6d47b8ca0cbe70bceb5fecf8dec8746"
-  integrity sha512-X4V/erIHWWHvkPHxKfL3f2eeaBC4knOu/trL07mllky3J+q7zLMQ7npigaFQRW2cpcSUz822RLbVAiKRq130Cg==
+sexy-loader@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/sexy-loader/-/sexy-loader-0.5.0.tgz#bbb9c1f0c2e72a93d03cd74e3a9664f6d46cf493"
+  integrity sha512-FqHDG2em3UtxsjLRnRgDeOiIOUdM6RLVbaeEF/2ewJe26fomb8nbuPWE2lFo4vWqPRexGcf+psksRYXmwK+s4w==
   dependencies:
     "@babel/core" "^7.10.2"
     cross-env "^7.0.2"
     loader-utils "^2.0.0"
     querystring "^0.2.0"
     schema-utils "^2.6.6"
-    sexy-framework "^0.4.19"
+    sexy-framework "^0.5.0"
     webpack "^4.43.0"
     webpack-cli "^3.3.12"
 
-"sexy-server@file:../hawa/packages/sexy-server":
-  version "0.4.15"
+sexy-server@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/sexy-server/-/sexy-server-0.5.0.tgz#d1e2b8adf38f30c41031013649d1f4d856e0e81c"
+  integrity sha512-AYC+KQD1HJfV4HYRlWahIC+sSk1kf8epmlEBHtU+Me0JbLtD9RA1OxOWyfNCIanIzvDR8PRAkU6n4pIDcYjixg==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-transform-runtime" "^7.10.1"
@@ -5745,8 +5747,8 @@ sexy-loader@^0.4.15:
     sade "^1.7.3"
     sass "^1.26.8"
     sass-loader "^8.0.2"
-    sexy-framework "^0.4.15"
-    sexy-loader "^0.4.15"
+    sexy-framework "^0.5.0"
+    sexy-loader "^0.5.0"
     stats-webpack-plugin "^0.7.0"
     style-loader "^1.2.1"
     terser-webpack-plugin "^3.0.6"

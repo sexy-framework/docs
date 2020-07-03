@@ -18,6 +18,6 @@
     "fastify-url-data": "^2.4.0",
     "feather-icons": "^4.28.0",
     "highlight.js": "^10.1.1",
-    "sexy-server": "file:../hawa/packages/sexy-server"
+    "sexy-server": "^0.5.0"
   }
 }

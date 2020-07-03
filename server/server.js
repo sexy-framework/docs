@@ -31,10 +31,7 @@ fastify.setNotFoundHandler(function (request, reply) {
 	}, request, reply)
 })
 
-// fastify.setErrorHandler(function (error, request, reply) {
-	// errorHandler(error, request, reply)
-// })
-
+// error handler
 function errorHandler(err, request, reply) {
 
 	const url = request.urlData();
@@ -57,6 +54,7 @@ function errorHandler(err, request, reply) {
 	});
 }
 
+// set routes
 sexy.routes((path, route) => {
 
 	fastify.get(path, (request, reply) => {
@@ -78,12 +76,14 @@ sexy.routes((path, route) => {
 	})
 });
 
+// server response
 function showPage(reply, page) {
 	reply
 		.type('text/html')
 		.send(page);
 }
 
+// cache
 function cache(key, getValue, callback)
 {
 	fastify.cache.get(key, (err, result) => {
@@ -98,23 +98,7 @@ function cache(key, getValue, callback)
 			});
 		});
 	})
-
-	
-
-	// if(cache) {
-	// 	callback(cache);
-	// } else {
-	// 	getValue((html) => {
-	// 		fastify.cache.set(key, html, 10000, (err, result) => {
-	// 			console.log(1, result)
-	// 			if (err) return reply.send(err)
-	// 			callback(html);
-	// 		});
-	// 	});
-		
-	// }
 }
-
 
 
 // Run the server!
