@@ -3,7 +3,7 @@
 <label for="checkbox">{{ checked }}</label>
 
 <script>
-import { bind } from 'sexy-framework/directives'
+import { bind } from 'sexy/directives'
 
 let checked = o(true);
 </script>

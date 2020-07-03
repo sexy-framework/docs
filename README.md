@@ -1,4 +1,13 @@
-
+ <!--  - host: sexy-js.ninja
+    http:
+      noTLS: true
+      nodePort: 0
+      paths:
+      - backend:
+          serviceName: sexy-framework
+          servicePort: 80
+        path: /
+      port: 0 -->
 
 <!-- codeExamples.set('component', `
 <div class="button" :class="{ active: visible }">

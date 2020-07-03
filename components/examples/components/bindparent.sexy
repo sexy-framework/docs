@@ -5,6 +5,6 @@
 </div>
 
 <script>
-import { bind } from 'sexy-framework/directives';
+import { bind } from 'sexy/directives';
 let text = o('Parent text');
 </script>

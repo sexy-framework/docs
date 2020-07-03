@@ -6,8 +6,8 @@
 </figure>
 
 <script async>
-import { html } from 'sexy-framework/directives'
-import { lazyArray } from 'sexy-framework/render'
+import { html } from 'sexy/directives'
+import { lazyArray } from 'sexy/render'
 
 let code = p('No code');
 let type = p('html');

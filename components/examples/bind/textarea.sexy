@@ -9,7 +9,7 @@
 
 
 <script>
-import { bind } from 'sexy-framework/directives'
+import { bind } from 'sexy/directives'
 
 let message = o('');
 </script>

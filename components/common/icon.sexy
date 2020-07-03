@@ -2,7 +2,7 @@
 
 <script>
 import feather from 'feather-icons';
-import { html } from 'sexy-framework/directives';
+import { html } from 'sexy/directives';
 
 let icon = o('');
 let type = p(null);

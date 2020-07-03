@@ -2,7 +2,7 @@ const sexy = require('../.sexy/server/index.js');
 const path = require('path');
 
 const fastify = require('fastify')({
-	// logger: true
+	logger: true
 })
 
 // GZIP
@@ -102,7 +102,7 @@ function cache(key, getValue, callback)
 
 
 // Run the server!
-fastify.listen(3000, (err, address) => {
+fastify.listen(3000, '0.0.0.0', (err, address) => {
 	if (err) {
 		console.log(err)
 		throw err
