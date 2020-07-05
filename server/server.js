@@ -12,6 +12,9 @@ fastify.register(require('fastify-compress'), {})
 fastify.register(require('fastify-static'), {
 	root: path.resolve(__dirname, '../.sexy/client'),
 	prefix: '/', // optional: default '/'
+	setHeaders: function(res, path, stat) {
+		res.setHeader('Cache-Control', 'public, max-age=31557600');
+	}
 })
 
 // Route caching
