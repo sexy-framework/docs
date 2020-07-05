@@ -71,7 +71,7 @@ codeExamples.set('example', `
 <div transition:classed="fade">test</div>
 
 <script>
-import { classed } from 'sexy-framework/transition'
+import { classed } from 'sexy/transition'
 </script>
 
 <style>

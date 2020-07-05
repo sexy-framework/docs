@@ -48,7 +48,7 @@
 	<p>
 		Вам нужно минимум два пакета: сам фреймворк и его загрузчик (webpack loader).
 	</p>
-	<docs.code type="console" code="npm install sexy-framework sexy-loader --save"></docs.code>
+	<docs.code type="console" code="npm install sexy sexy-loader --save"></docs.code>
 
 	<p>
 		После этого необходимо зарегистрировать load для sexy файлов в webpack:
@@ -90,7 +90,7 @@ module: {
 `);
 
 codeExamples.set('usage', `
-import { render } from 'sexy-framework/render';
+import { render } from 'sexy/render';
 import HelloWorld from './components/hello-world.sexy';
 
 const layout = document.getElementById('layout');

@@ -101,7 +101,7 @@ Let counter = o(1);
 codeExamples.set('directives', `
 <input type="text" (bind)="nameValue"/>
 <script>
-import { bind } from ‘sexy-framework/directives’;
+import { bind } from ‘sexy/directives’;
 </script>
 `);
 </script>

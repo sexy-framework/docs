@@ -38,7 +38,7 @@ codeExamples.set('input', `
 <p>Введённое сообщение: {{ message }}</p>
 
 <script>
-import { bind } from 'sexy-framework/directives'
+import { bind } from 'sexy/directives'
 
 let message = o('');
 </script>
@@ -51,7 +51,7 @@ codeExamples.set('textarea', `
 <textarea (bind)="message" placeholder="введите несколько строчек"></textarea>
 
 <script>
-import { bind } from 'sexy-framework/directives'
+import { bind } from 'sexy/directives'
 
 let message = o('');
 </script>

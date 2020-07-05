@@ -29,7 +29,7 @@
 		Sexy-server использует:
 	</h3>
 	<ol type="1">
-		<li>Sexy-framework для компонентов</li>
+		<li>sexy для компонентов</li>
 		<li>Для роутинга navigo (lightweight router)</li>
 	</ol>
 	<p>

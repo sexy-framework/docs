@@ -45,7 +45,7 @@
 
 <script>
 export { Layout } from '@layouts/docs.sexy';
-// import { html } from 'sexy-framework/directives';
+// import { html } from 'sexy/directives';
 
 let codeExamples = new Map();
 
@@ -65,7 +65,7 @@ codeExamples.set('parent', `
 <example (bind)="text"></example>
 
 <script>
-import { bind } from 'sexy-framework/directives';
+import { bind } from 'sexy/directives';
 let text = o('Parent text');
 </script>
 `);
@@ -77,7 +77,7 @@ codeExamples.set('emit', `
 <example :value="text" @input="changed(event)"></example>
 
 <script>
-import { bind } from 'sexy-framework/directives';
+import { bind } from 'sexy/directives';
 let text = o('Parent text');
 
 function changed(event) {

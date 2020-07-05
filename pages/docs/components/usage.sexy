@@ -96,7 +96,7 @@ import ButtonCounter from './components/basics/button-counter.sexy';
 `);
 
 codeExamples.set('global', `
-import { registerComponent } from 'sexy-framework/render';
+import { registerComponent } from 'sexy/render';
 
 import ButtonCounter from './components/basics/button-counter.sexy';
 

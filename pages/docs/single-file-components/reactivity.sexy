@@ -80,7 +80,7 @@ multiplier() // вернет 2
 
 codeExamples.set('watch', `
 // some.component script tag with prop
-import { watch } from 'sexy-framework/observables';
+import { watch } from 'sexy/observables';
 
 let str = o('Some str value');
 
