@@ -60,18 +60,18 @@ export { Layout } from '@layouts/docs.sexy';
 let codeExamples = new Map();
 
 codeExamples.set('state', `
-Let couter = o({ value: 1 })
+let couter = o({ value: 1 })
 
-Let counterValue = counter();
-Let realCounterValue = counterValue.value;
+let counterValue = counter();
+let realCounterValue = counterValue.value;
 
 counterValue.value = 2; // Так делать не стоит, значение изменится, но обновления DOM не запустятся
 counter(counterValue) // поэтому обновим значение явно
 `);
 
 codeExamples.set('computed', `
-Let counter = o(1);
-Let muliplier = () => {
+let counter = o(1);
+let muliplier = () => {
 	return counter() * 2;
 }
 

@@ -94,7 +94,7 @@ codeExamples.set('stateful', `
 <div :data-value=”counter()”>{{ counter() + 1 }}</div>
 
 <script>
-Let counter = o(1);
+let counter = o(1);
 </script>
 `);
 

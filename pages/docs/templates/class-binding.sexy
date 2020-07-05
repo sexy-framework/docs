@@ -99,8 +99,8 @@ codeExamples.set('object-example', `
 
 codeExamples.set('object-example-data', `
 <script>
-Let isActive = o(true); // реактивная переменная
-Let hasError = false; // обычная переменная
+let isActive = o(true); // реактивная переменная
+let hasError = false; // обычная переменная
 </script>
 `);
 
