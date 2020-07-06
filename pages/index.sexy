@@ -12,7 +12,7 @@
                     <common.icon type="play"></common.icon>
                     <span>Начать знакомство</span>
                 </Route>
-                <a href="https://github.com/sexy/sexy" class="button is-medium is-light" target="_blank">
+                <a href="https://github.com/sexy-framework/sexy" class="button is-medium is-light" target="_blank">
                     <common.icon type="github"></common.icon>
                     <span>Github</span>
                 </a>
